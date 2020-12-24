@@ -82,6 +82,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={signIn}>로그인</button>
+      {/*다음 페이지로 넘겨*/}
       <input type="text" value={gSchoolNickname} onChange={(e) => setNickname(e.target.value)} maxLength={2} />
       <button onClick={signUp}>닉네임 등록</button>
     </div>
