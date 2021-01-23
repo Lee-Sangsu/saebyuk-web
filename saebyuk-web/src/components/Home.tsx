@@ -1,28 +1,34 @@
-import axios from 'axios';
-import Kakao from 'kakaojs';
 import React from 'react';
-import Cookies from 'js-cookie';
-import ProfileState from 'states/ProfileState';
-import {useSetRecoilState} from 'recoil';
 import { Link, useHistory } from "react-router-dom";
+import {useSetRecoilState} from 'recoil';
+import ProfileState from 'states/ProfileState';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 
 const Home = () =>{
   const history = useHistory();
   const setProfile = useSetRecoilState(ProfileState);
-  const signIn = () => {
+
+  const signInProcess = () => {
     axios.defaults.xsrfCookieName = "csrftoken"
     axios.defaults.xsrfHeaderName = "X-CSRFToken"
-    Kakao.Auth.login({
+    window.Kakao.Auth.login({
       scope: 'profile',
-      success: (res) => {
+      success: (res:any) => {
         console.log('first res:', res)
-        Kakao.Auth.setAccessToken(res.access_token);
-
+        window.Kakao.Auth.setAccessToken(res.access_token);
+  
         const csrftoken = Cookies.get('csrftoken');
         axios.post('http://127.0.0.1:8000/account/login/kakao/', {
           headers:{
-             "Access-Control-Allow-Origin": '*',
-             'Accept': 'application/json',
+              "Access-Control-Allow-Origin": '*',
+              'Accept': 'application/json',
               'Content-Type': 'application/json',
               'X-CSRFToken': csrftoken
           },
@@ -31,8 +37,9 @@ const Home = () =>{
           }
         })
         .then((res) => {
+          // setStatus(res.status);
           if (res.status === 203) {
-              console.log(res.data);
+            console.log(res.data);
             setProfile(res.data);
             history.push("/sign-up");
           } else if (res.status === 200) {
@@ -42,16 +49,15 @@ const Home = () =>{
         })
         .catch((err) => console.log(err))
       }, 
-      fail: (err) => {
-          console.error(err);
+      fail: (err:any) => {
+        console.error(err);
       }
     });
   };
 
-
   return (
     <div className="home">
-      <button onClick={signIn}>로그인</button>
+      <button onClick={signInProcess}>로그인</button>
       <Link to="/book/register/new">신청 및 등록</Link>
     </div>
   );

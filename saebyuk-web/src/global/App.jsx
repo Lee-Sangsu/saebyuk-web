@@ -4,7 +4,7 @@ import AppRouter from 'global/Router';
 
 function App() {
   React.useEffect(( ) => {
-    window.Kakao.init('ef9a576a8e9f7b59585eb0e36c820fad');
+    window.Kakao.init(`${process.env.KAKAO_KEY}`);
     Kakao.isInitialized();
   }, []);
 

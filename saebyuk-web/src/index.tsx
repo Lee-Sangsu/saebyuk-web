@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom'
 import App from './global/App';
 import {RecoilRoot} from 'recoil';
 
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
