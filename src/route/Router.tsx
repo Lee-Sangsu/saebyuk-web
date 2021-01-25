@@ -1,15 +1,15 @@
 import React from 'react';
 import {BrowserRouter,  Route, Switch } from "react-router-dom";
 import SignUp from 'components/SignUp';
-import Home from 'components/Home';
 import RegisterNewBook from 'components/RegisterNewBook';
+import Main from 'pages/Main';
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
         <Switch>
             <Route exact path="/">
-                <Home />
+                <Main />
             </Route>
             <Route path="/sign-up">
                 <SignUp />

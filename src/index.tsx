@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import App from './global/App';
+import App from './route/App';
 import {RecoilRoot} from 'recoil';
 
 declare global {

@@ -4,13 +4,13 @@ import BookInfo from '../interfaces/BookInfo';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useHistory } from "react-router-dom";
-import NewBookState from 'states/NewBookState';
-import {useRecoilValue} from 'recoil';
+// import NewBookState from 'states/NewBookState';
+// import {useRecoilValue} from 'recoil';
 
 const RegisterNewBook = () => {
     const [query, serQuery] = React.useState<string>('');
     const [booksInfo, setBooksInfo] = React.useState<[BookInfo]|undefined>();
-    const newBook = useRecoilValue(NewBookState);
+    // const newBook = useRecoilValue(NewBookState);
     const history = useHistory();
 
     const searchBook = () => {
@@ -80,7 +80,7 @@ const RegisterNewBook = () => {
         
         const csrftoken = Cookies.get('csrftoken');
         // newBook
-        axios.post('http://127.0.0.1:8000/account/sign-up/kakao/', {
+        axios.post('http://127.0.0.1:8000/book/register/new/', {
           headers:{
               "Access-Control-Allow-Origin": '*',
               'Accept': 'application/json',

@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const Home = () =>{
+const SignIn = () =>{
   const history = useHistory();
   const setProfile = useSetRecoilState(ProfileState);
 
@@ -63,4 +63,4 @@ const Home = () =>{
   );
 }
 
-export default Home;
+export default SignIn;
