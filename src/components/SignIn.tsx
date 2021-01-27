@@ -25,7 +25,7 @@ const SignIn = () =>{
         window.Kakao.Auth.setAccessToken(res.access_token);
   
         const csrftoken = Cookies.get('csrftoken');
-        axios.post('http://127.0.0.1:8000/account/login/kakao/', {
+        axios.post(`${process.env.REACT_APP_BASE_URL}/account/login/kakao/`, {
           headers:{
               "Access-Control-Allow-Origin": '*',
               'Accept': 'application/json',
@@ -40,10 +40,11 @@ const SignIn = () =>{
           // setStatus(res.status);
           if (res.status === 203) {
             console.log(res.data);
-            setProfile(res.data);
+            setProfile(res.data); 
             history.push("/sign-up");
           } else if (res.status === 200) {
             console.log(res.data);
+            window.localStorage.setItem('user', res.data.user.g_school_nickname);
             window.alert("login completed");
           }
         })

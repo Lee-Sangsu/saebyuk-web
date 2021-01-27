@@ -15,7 +15,7 @@ const SignUp = () => {
         const kakao_profile_info = profile.kakao_profile;
         console.log(kakao_profile_info);
         const csrftoken = Cookies.get('csrftoken');
-        axios.post('http://127.0.0.1:8000/account/sign-up/kakao/', {
+        axios.post(`${process.env.REACT_APP_BASE_URL}/account/sign-up/kakao/`, {
           headers:{
               "Access-Control-Allow-Origin": '*',
               'Accept': 'application/json',
@@ -26,12 +26,13 @@ const SignUp = () => {
             kakao_id: profile.kakao_id,
             g_school_nickname: gSchoolNickname,
             kakao_nickname: kakao_profile_info.nickname,
-            profile_image: kakao_profile_info.thumbnail_image_url,
+            profile_image: kakao_profile_info.thumbnail_image_url || '',
             access_token: profile.access_token
           }
         })
         .then((res) => {
             console.log(res);
+            window.localStorage.setItem('user', gSchoolNickname);
             history.push('/')
         })
         .catch((err) => console.log(err))
@@ -40,7 +41,7 @@ const SignUp = () => {
     return (
         <div>
             <input type="text" value={gSchoolNickname} onChange={(e) => setNickname(e.target.value)} maxLength={2} />
-            <button onClick={() => signUp}>회원 가입</button>
+            <button onClick={ signUp}>회원 가입</button>
         </div>
     )
 };

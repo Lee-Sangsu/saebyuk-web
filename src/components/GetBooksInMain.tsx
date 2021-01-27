@@ -6,7 +6,7 @@ const GetBooksInMain = () => {
     const getBooks = () => {
         const csrftoken = Cookies.get('csrftoken');
         // newBook
-        fetch('http://127.0.0.1:8000/book/main/', {
+        fetch(`${process.env.REACT_APP_BASE_URL}/book/main/`, {
          method: 'GET',
           headers:{
             //   "Access-Control-Allow-Origin": '*',

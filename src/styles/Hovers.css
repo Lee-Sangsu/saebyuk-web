@@ -1,0 +1,7 @@
+#search-res-box {
+  background-color: white;
+  transition: 0.3s ease-in;
+}
+#search-res-box:hover {
+  background-color: #b3b3b3;
+}
