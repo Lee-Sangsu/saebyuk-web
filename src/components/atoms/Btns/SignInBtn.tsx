@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {useSetRecoilState} from 'recoil';
 import ProfileState from 'states/ProfileState';
 import Cookies from 'js-cookie';
@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const SignIn = () =>{
+const SignInBtn = () =>{
   const history = useHistory();
   const setProfile = useSetRecoilState(ProfileState);
 
@@ -57,11 +57,8 @@ const SignIn = () =>{
   };
 
   return (
-    <div className="home">
-      <button onClick={signInProcess}>로그인</button>
-      <Link to="/book/register/new">신청 및 등록</Link>
-    </div>
+    <button onClick={signInProcess}>로그인</button>
   );
 }
 
-export default SignIn;
+export default SignInBtn;

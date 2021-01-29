@@ -1,18 +1,13 @@
 import React from 'react';
-import SearchResults from 'components/atoms/SearchResult';
-import BookInfo from '../interfaces/BookInfo';
+import SearchResults from 'components/molecules/SearchResult';
+import BookInfo from 'interfaces/BookInfo';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import { useHistory } from "react-router-dom";
-import NewBookState from 'states/NewBookState';
-import {useRecoilValue} from 'recoil';
-import SubTitle from './atoms/SubTitle';
+import SubTitle from 'components/atoms/Texts/SubTitle';
+import TextInput from 'components/atoms/Inputs/TextInput';
 
-const RegisterNewBook = () => {
+const SearchNewBook = () => {
     const [query, serQuery] = React.useState<string>('');
     const [booksInfo, setBooksInfo] = React.useState<[BookInfo]|undefined>();
-    const newBook = useRecoilValue(NewBookState);
-    const history = useHistory();
     
     const searchBook = React.useCallback(() => {
         let id = 1;
@@ -56,19 +51,7 @@ const RegisterNewBook = () => {
                 };
                 
                 emptyArray.push(bookObj);
-                //contents, authors, datetime, isbn, price, publisher, thumbnail, title, url, translators
-                
-                /* Failed trying
-                if (booksInfo === undefined) {
-                    setBooksInfo([bookObj]);
-                    console.log(booksInfo);
-                } else {
-                    // var emptyArray = [];
-                    const newList = booksInfo.concat(bookObj);
-                    // return newList;
-                    console.log('닿았다');
-                    setBooksInfo(newList as [BookInfo]); 
-                }*/
+                //contents, authors, datetime, isbn, price, publisher, thumbnail, title, url, translators from api
             });
             if (emptyArray) {
                 setBooksInfo(emptyArray as [BookInfo]);
@@ -81,39 +64,7 @@ const RegisterNewBook = () => {
 
     React.useEffect(() => {
         searchBook();
-    }, [query, searchBook])
-    
-    const registerBook = () => {
-        const csrftoken = Cookies.get('csrftoken');
-        // newBook
-        axios.post(`${process.env.REACT_APP_BASE_URL}/book/register/new/`, {
-          headers:{
-              "Access-Control-Allow-Origin": '*',
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'X-CSRFToken': csrftoken
-          },
-          data: {
-            isbn: newBook.isbn, 
-            title: newBook.title,  
-            author: newBook.author,  
-            thumbnail_image: newBook.thumbnail_image, 
-            publisher: newBook.publisher,   
-            page: newBook.page,    
-            published_date: newBook.published_date,   // 따로 설정해줘야함.
-            keyword: newBook.keyword, 
-            subtitle: newBook.subtitle,     // 따로 설정해줘야함.
-            description: newBook.description, 
-            purchase_link: newBook.purchase_link // 따로 설정해줘야함.
-          }
-        })
-        .then((res) => {
-            console.log(res);
-            history.push('/')
-        })
-        .catch((err) => console.log(err))
-    };
-
+    }, [query, searchBook]);
 
     return (
         <div style={{
@@ -135,13 +86,19 @@ const RegisterNewBook = () => {
             </div>
 
             <SubTitle text="도서 검색" />
-            <input type="text" value={query} onClick={() => {
+            {/* <input type="text" value={query} onClick={() => {
                 document.getElementById("search-res-container")!.style.display = 'flex';
             }} placeholder='도서명 또는 저자 입력' onChange={(e) => serQuery(e.target.value)} style={{
                 display:'flex',
-                width:'300px',
-                height:'35px'
-            }} /> 
+                width:'290px',
+                height:'35px',
+                border:'2px solid #B3B3B3', 
+                borderRadius: '10px',
+                paddingLeft:'10px'
+            }} />  */}
+            <TextInput value={query} onClick={() => {
+                document.getElementById("search-res-container")!.style.display = 'flex';
+            }} placeholder='도서명 또는 저자 입력' onChange={(e:any) => serQuery(e.target.value)} />
 
             <SubTitle text="도서 목록" />
 
@@ -163,10 +120,8 @@ const RegisterNewBook = () => {
                 booksInfo.map((data) => <SearchResults key={data.id} data={data} />)
                 }
             </div>
-
-            <button onClick={registerBook}>등록하기</button>
         </div>
     )
 };
 
-export default RegisterNewBook;
+export default SearchNewBook;

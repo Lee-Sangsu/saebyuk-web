@@ -1,5 +1,4 @@
 import React from 'react';
-import BookInfo from '../interfaces/BookInfo';
 import Cookies from 'js-cookie';
 
 const GetBooksInMain = () => {

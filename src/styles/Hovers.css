@@ -5,3 +5,15 @@
 #search-res-box:hover {
   background-color: #b3b3b3;
 }
+
+.keyword-box {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.keyword-box:hover {
+  background-color: black;
+  color: white;
+}
