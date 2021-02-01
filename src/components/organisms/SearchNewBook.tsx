@@ -69,8 +69,9 @@ const SearchNewBook = () => {
     return (
         <div style={{
             display:'flex',
-            height: window.innerHeight,
+            height: '70%',
             width: '50%',
+            marginTop:'10%',
             flexDirection:'column',
             justifyContent: 'flex-start',
             alignItems: 'center'
@@ -85,20 +86,20 @@ const SearchNewBook = () => {
                 <h3>{`${window.localStorage.getItem('user')}님, 새로운 책을 등록할 수 있어요 ☺️`}</h3>
             </div>
 
-            <SubTitle text="도서 검색" />
+            <SubTitle margin='10px 0' text="도서 검색" />
 
             <TextInput value={query} onClick={() => {
                 document.getElementById("search-res-container")!.style.display = 'flex';
             }} placeholder='도서명 또는 저자 입력' onChange={(e:any) => serQuery(e.target.value)} />
 
-            <SubTitle text="도서 목록" />
+            <SubTitle margin='20px 0px 5px 0px' text="도서 목록" />
 
             <div id="search-res-container" style={{
                 display:'none',
                 flexDirection:'column',
                 width:'300px',
                 minHeight:'30px',
-                maxHeight:'180px',
+                maxHeight:'205px',
                 overflowY:'scroll',
                 border:'2px solid #B3B3B3', 
                 borderRadius:'10px'

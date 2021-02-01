@@ -12,7 +12,6 @@ const RegisterNewBookBtn = ({newBook}:any) => {
     const onClick = () => {
         var newBookGenre = [];
         var newBookKeywords = [];
-        const csrftoken = Cookies.get('csrftoken');
         // newBook
         for (var i=0; i < genres.length; i++){
             if(newBook.genre[i] === true) {
@@ -25,6 +24,7 @@ const RegisterNewBookBtn = ({newBook}:any) => {
             }
         }
         
+        const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/book/register/new/`, {
             headers:{
                 "Access-Control-Allow-Origin": '*',

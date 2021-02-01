@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SubTitle = ({text}:any) => {
+const SubTitle = ({margin, text}:any) => {
     return (
         <span style={{
             fontSize:'15px',
             textAlign:'start',
             width: '300px',
-            margin: '5px 0'
+            margin: margin
         }}>
             {text}
         </span>
