@@ -5,10 +5,25 @@ import { useHistory } from 'react-router-dom';
 
 const RegisterNewBookBtn = ({newBook}:any) => {
     const history = useHistory();
+    console.log(newBook);
+    const genres = ["환경", "디자인", "마케팅", "페미니즘", "기타"];
+    const keywords = ['유익한', '감동적인', '영감을 주는'];
 
     const onClick = () => {
+        var newBookGenre = [];
+        var newBookKeywords = [];
         const csrftoken = Cookies.get('csrftoken');
         // newBook
+        for (var i=0; i < genres.length; i++){
+            if(newBook.genre[i] === true) {
+                newBookGenre.push(genres[i]);
+            }
+        }
+        for (var x=0; x < keywords.length; x++){
+            if(newBook.keyword[x] === true) {
+                newBookKeywords.push(genres[x]);
+            }
+        }
         
         axios.post(`${process.env.REACT_APP_BASE_URL}/book/register/new/`, {
             headers:{
@@ -20,16 +35,16 @@ const RegisterNewBookBtn = ({newBook}:any) => {
             data: {
                 isbn: newBook.isbn, 
                 title: newBook.title,  
-                author: newBook.author,  
+                author: newBook.authors,  
                 thumbnail_image: newBook.thumbnail_image, 
                 publisher: newBook.publisher,   
-                page: newBook.page as number,   // 따로 설정해줘야함.
+                page: newBook.page as number,  
                 published_date: newBook.published_date,   
-                keyword: newBook.keyword, // 따로 설정해줘야함. true인 것만 담아야 해
-                genre: newBook.genre, // 따로 설정해줘야함. true인 것만 담아야 해
-                subtitle: newBook.subtitle,  // 따로 설정해줘야함.
+                keyword: newBookKeywords, 
+                genre: newBookGenre, 
+                subtitle: newBook.subtitle, 
                 description: newBook.description, 
-                purchase_link: newBook.purchase_link ? newBook.purchase_link : "" // 따로 설정해줘야함.
+                purchase_link: newBook.purchase_link ? newBook.purchase_link : ""
             }
         })
         .then((res) => {
@@ -39,7 +54,12 @@ const RegisterNewBookBtn = ({newBook}:any) => {
 
             //aler를 주자.
         })
-        .catch((err) => console.log(err))    
+        .catch((err) => {
+            if(err.response.status === 400) {
+                window.alert("해당 isbn을 가진 책이 이미 등록되어 있습니다.")
+            }
+            console.log(err);
+        })    
     };
 
     return (

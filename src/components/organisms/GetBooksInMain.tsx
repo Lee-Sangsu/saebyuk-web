@@ -1,20 +1,10 @@
 import React from 'react';
-import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const GetBooksInMain = () => {
     const getBooks = () => {
-        const csrftoken = Cookies.get('csrftoken');
         // newBook
-        fetch(`${process.env.REACT_APP_BASE_URL}/book/main/`, {
-         method: 'GET',
-          headers:{
-            //   "Access-Control-Allow-Origin": '*',
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            //   'X-CSRFToken': csrftoken
-          },
-          mode: "no-cors"
-        })
+        axios.get(`${process.env.REACT_APP_BASE_URL}/book/main/`)
         .then((res) => {
             console.log(res);
         })

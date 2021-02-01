@@ -70,7 +70,7 @@ const SearchNewBook = () => {
         <div style={{
             display:'flex',
             height: window.innerHeight,
-            width: window.innerWidth*0.5,
+            width: '50%',
             flexDirection:'column',
             justifyContent: 'flex-start',
             alignItems: 'center'
@@ -86,16 +86,7 @@ const SearchNewBook = () => {
             </div>
 
             <SubTitle text="도서 검색" />
-            {/* <input type="text" value={query} onClick={() => {
-                document.getElementById("search-res-container")!.style.display = 'flex';
-            }} placeholder='도서명 또는 저자 입력' onChange={(e) => serQuery(e.target.value)} style={{
-                display:'flex',
-                width:'290px',
-                height:'35px',
-                border:'2px solid #B3B3B3', 
-                borderRadius: '10px',
-                paddingLeft:'10px'
-            }} />  */}
+
             <TextInput value={query} onClick={() => {
                 document.getElementById("search-res-container")!.style.display = 'flex';
             }} placeholder='도서명 또는 저자 입력' onChange={(e:any) => serQuery(e.target.value)} />
