@@ -1,7 +1,7 @@
 import React from 'react';
 import SubTitle from 'components/atoms/Texts/SubTitle';
-import TextInput from 'components/atoms/Inputs/TextInput';
-import RequestBookBtn from 'components/atoms/Btns/RequestBookBtn';
+import {TextInput, TextArea} from 'components/atoms/TextInputs';
+import {RequestBookBtn} from 'components/atoms/Btns';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -10,13 +10,15 @@ const FAQ = () => {
 
     const [faqTitle, setFAQTitle] = React.useState<string>('');
     const [faqContent, setFAQContent] = React.useState<string>('');
+    const [pending, setPending] = React.useState<boolean>(false);
 
-    /*
+
     const faq = () => {
         const csrftoken = Cookies.get('csrftoken');
         if(userNickName){
-            // if (bookTitle && bookAuthor) {
-                axios.post(`${process.env.REACT_APP_BASE_URL}/book/request/`, {
+            if (faqTitle && faqContent) {
+                setPending(true);
+                axios.post(`${process.env.REACT_APP_BASE_URL}/book/faq/`, {
                     headers: {
                         "Access-Control-Allow-Origin": '*',
                         'Accept': 'application/json',
@@ -24,24 +26,23 @@ const FAQ = () => {
                         'X-CSRFToken': csrftoken
                     },
                     data: {
-                        g_school_nickname: userNickName,
-                        // book_title: bookTitle,
-                        author: bookAuthor,
-                        interest_parts: interestedSection,
-                        others: etcInfo
+                        title: `${faqTitle}`,
+                        body: `${faqContent}`
                     }
                 }).then((res) => {
-                    console.log("성공적으로 신청되었습니다.");
+                    console.log(res);
+                    setPending(false);
+                    window.alert("문의 내역이 성공적으로 등록되었습니다.");
                 }).catch((e) => console.error(e))
             } else {
                 window.alert("도서명과 저자를 입력해주세요.");
             }
         } 
-        // else {
-        //     window.alert("사용자 정보를 찾을 수 없습니다.");
-        // }
+        else {
+            window.alert("사용자 정보를 찾을 수 없습니다.");
+        }
     };
-    */
+
 
     React.useEffect(() => {
         if (faqTitle && faqContent) {
@@ -74,13 +75,15 @@ const FAQ = () => {
             </div>
 
             <SubTitle margin='10px 0' text="문의 주제*" />
-            <TextInput value={faqTitle} placeholder='도서명 입력' onChange={(e:any) => setFAQTitle(e.target.value)} />
+            <TextInput value={faqTitle} placeholder='주제 입력' onChange={(e:any) => setFAQTitle(e.target.value)} />
 
-            {/* textarea로 바꿔야함. */}
             <SubTitle margin='20px 0px 5px 0px' text="문의 내용*" />
-            <TextInput value={faqContent} placeholder='저자 입력' onChange={(e:any) => setFAQContent(e.target.value)} />
+            {/* textarea로 바꿔야함. */}
+            <TextArea value={faqContent} placeholder='문의 내용 입력' onChange={(e:any) => setFAQContent(e.target.value)} />
 
-            <RequestBookBtn id="faq-btn" text="문의" onClick={console.log('faq')} margin="20px 0 0 0" />
+            {pending ? <h1>문의 내역을 저장하는 중입니다</h1>: <></>}
+
+            <RequestBookBtn id="faq-btn" text="문의" onClick={faq} margin="20px 0 0 0" />
 
         </div>
     )

@@ -1,5 +1,5 @@
 import GetBooksInMain from 'components/organisms/GetBooksInMain';
-import SignIn from 'components/atoms/Btns/SignInBtn';
+import {SignInBtn} from 'components/atoms/Btns';
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Main = () => {
     return (
       <div className="main">
-          <SignIn />
+          <SignInBtn />
           <Link to="/book/register/new">신청 및 등록</Link>
           <GetBooksInMain />
       </div>

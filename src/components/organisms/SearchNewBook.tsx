@@ -3,7 +3,7 @@ import SearchResults from 'components/molecules/SearchResult';
 import BookInfo from 'interfaces/BookInfo';
 import axios from 'axios';
 import SubTitle from 'components/atoms/Texts/SubTitle';
-import TextInput from 'components/atoms/Inputs/TextInput';
+import {TextInput} from 'components/atoms/TextInputs';
 
 const SearchNewBook = () => {
     const [query, serQuery] = React.useState<string>('');

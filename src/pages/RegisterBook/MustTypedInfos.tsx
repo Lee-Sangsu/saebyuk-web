@@ -1,5 +1,5 @@
 
-import TextInput from 'components/atoms/Inputs/TextInput';
+import {TextInput} from 'components/atoms/TextInputs';
 import AlertTitle from 'components/atoms/Texts/AlertTitle';
 import BookImgText from 'components/molecules/BookImgText';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';

@@ -1,7 +1,7 @@
 import React from 'react';
 import SubTitle from 'components/atoms/Texts/SubTitle';
-import TextInput from 'components/atoms/Inputs/TextInput';
-import RequestBookBtn from 'components/atoms/Btns/RequestBookBtn';
+import {TextInput} from 'components/atoms/TextInputs';
+import {RequestBookBtn} from 'components/atoms/Btns';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 

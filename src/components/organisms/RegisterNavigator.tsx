@@ -1,6 +1,5 @@
 import React from 'react';
-import NextorBackBtn from 'components/atoms/Btns/NextorBackBtn';
-import RegisterNewBookBtn from 'components/atoms/Btns/RegisterNewBookBtn';
+import {NextorBackBtn, RegisterNewBookBtn} from 'components/atoms/Btns';
 import EmptyState from 'states/EmptyState';
 import {useRecoilValue} from 'recoil';
 
