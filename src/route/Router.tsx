@@ -6,30 +6,36 @@ import SelectGenreOfNewBook from 'pages/RegisterBook/SelectGenreOfNewBook';
 import InputKeywords from 'pages/RegisterBook/InputKeywords';
 import { MustTypedInfos } from 'pages/RegisterBook/MustTypedInfos';
 import ReqOrRegBook from 'pages/ReqOrRegBook';
+import Navigator from './Navigator';
+import { BookInfo } from 'pages/BookInfo';
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
-        <Switch>
-            <Route exact path="/">
-                <Main />
-            </Route>
-            <Route exact path="/sign-up">
-                <SignUp />
-            </Route>
-            <Route exact path="/book/register/new">
-                <ReqOrRegBook />
-            </Route>
-            <Route exact path="/book/register/keyword/">
-                <InputKeywords />
-            </Route>
-            <Route exact path="/book/register/etc-infos/">
-                <MustTypedInfos />
-            </Route>
-            <Route path="/book/register/:item?">
-                <SelectGenreOfNewBook />
-            </Route>
-        </Switch>
+            <Navigator />
+            <Switch>
+                <Route exact path="/">
+                    <Main />
+                </Route>
+                <Route exact path="/sign-up">
+                    <SignUp />
+                </Route>
+                <Route exact path="/book/info/:item?">
+                    <BookInfo />
+                </Route>
+                <Route exact path="/book/request-or-faq">
+                    <ReqOrRegBook />
+                </Route>
+                <Route exact path="/book/register/keyword/">
+                    <InputKeywords />
+                </Route>
+                <Route exact path="/book/register/etc-infos/">
+                    <MustTypedInfos />
+                </Route>
+                <Route path="/book/register/:item?">
+                    <SelectGenreOfNewBook />
+                </Route>
+            </Switch>
         </BrowserRouter>
     )
 };

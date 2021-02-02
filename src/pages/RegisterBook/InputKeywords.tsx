@@ -1,5 +1,5 @@
 import AlertTitle from 'components/atoms/Texts/AlertTitle';
-import BookImgText from 'components/molecules/BookImgText';
+import {RegisterBookImgText} from 'components/molecules/BookImgText';
 import NewBookKeywords from 'components/organisms/NewBookKeywords';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';
 import React from 'react';
@@ -38,7 +38,7 @@ const InputKeywords = () => {
                 alignItems:'center',
                 width:'650px', margin: `${window.innerHeight*0.1}px 0`
             }}>
-                <BookImgText item={item} />
+                <RegisterBookImgText item={item} />
                 <NewBookKeywords setEmpty={setEmpty} keywords={keywords} keywordChecked={keywordChecked} />
             </div>
             <RegisterNavigator toPrev={{ 

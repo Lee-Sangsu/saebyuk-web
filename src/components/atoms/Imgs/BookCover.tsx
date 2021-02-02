@@ -1,8 +1,8 @@
 import React from 'react';
 
-const BookCover = ({src, width, height, margin}:any) => {
+const BookCover = ({onClick, className, src, width, height, margin}:any) => {
     return (
-        <img src={src !== "" ? src : require('assets/missing-book.png').default} alt="표지 사진" style={{
+        <img onClick={onClick} className={className} src={src !== "" ? src : require('assets/missing-book.png').default} alt="표지 사진" style={{
             height:height,
             width:width,
             margin: margin,

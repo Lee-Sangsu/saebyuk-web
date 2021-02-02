@@ -31,7 +31,7 @@ const ReqOrRegBook = () => {
             }} />
             
             {/* Admin User Check */}
-            {userNickName === `${process.env.REACT_APP_ADMIN_USER_NAME}` ? <SearchNewBook /> : <FAQ /> }
+            {userNickName === `${process.env.REACT_APP_ADMIN_USER_NAME}` || userNickName ===  `${process.env.REACT_APP_DEVELOPER_NAME}` ? <SearchNewBook /> : <FAQ /> }
         </div>
     )
 };

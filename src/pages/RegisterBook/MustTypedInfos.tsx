@@ -1,7 +1,7 @@
 
 import {TextInput} from 'components/atoms/TextInputs';
 import AlertTitle from 'components/atoms/Texts/AlertTitle';
-import BookImgText from 'components/molecules/BookImgText';
+import {RegisterBookImgText} from 'components/molecules/BookImgText';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const MustTypedInfos = () => {
                 alignItems:'center',
                 width:'650px', margin: `${window.innerHeight*0.1}px 0`
             }}>
-                <BookImgText item={item} />
+                <RegisterBookImgText item={item} />
                 <div style={{
                     display:'flex',
                     flexDirection:'column',

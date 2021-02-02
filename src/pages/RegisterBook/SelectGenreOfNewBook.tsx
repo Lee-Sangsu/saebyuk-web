@@ -2,7 +2,7 @@ import AlertTitle from 'components/atoms/Texts/AlertTitle';
 import {KeywordBox} from 'components/atoms/Boxes/KeywordBox';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import BookImgText from 'components/molecules/BookImgText';
+import { RegisterBookImgText } from 'components/molecules/BookImgText';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';
 import EmptyState from 'states/EmptyState';
 import { useSetRecoilState } from 'recoil';
@@ -57,7 +57,7 @@ const SelectGenreOfNewBook = () => {
                 alignItems:'center',
                 width:'650px', margin: `${window.innerHeight*0.1}px 0`
             }}>
-                <BookImgText item={item} />
+                <RegisterBookImgText item={item} />
                 <div style={{
                     display:'flex',
                     flexDirection:'row',
@@ -72,7 +72,7 @@ const SelectGenreOfNewBook = () => {
                     )}
                 </div>
             </div>
-            <RegisterNavigator toPrev="/book/register/new" isRegister={false} item={item} genreChecked={genreChecked} toNext={{ pathname:`/book/register/keyword/`, state:{
+            <RegisterNavigator toPrev="/book/request-or-faq" isRegister={false} item={item} genreChecked={genreChecked} toNext={{ pathname:`/book/register/keyword/`, state:{
                 item: {
                     ...item,
                     genre: genreChecked
