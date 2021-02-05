@@ -181,3 +181,25 @@ export const SignInBtn = () =>{
     <button onClick={signInProcess}>로그인</button>
   );
 };
+
+export const BorrowBookBtn = ({borrowAvailable, onClick}: any) => {
+    const returnNothing = ():void => {return ;};
+    return (
+        <button onClick={borrowAvailable ? onClick : returnNothing} style={{
+            minWidth: '190px',
+            height: '55px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: borrowAvailable? 'black' : '#DFDFDF',
+            color: borrowAvailable ? 'white' : '#C2C3CB',
+            fontSize: '23px',
+            borderWidth: '0',
+            borderRadius: '13px',
+            cursor: borrowAvailable ? 'pointer' : 'none',
+            boxShadow: 'rgb(203 203 203) 2.5px 2.5px 7px'
+        }}>
+            대출하기
+        </button>
+    );
+};

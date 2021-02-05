@@ -29,3 +29,22 @@ export const KeywordBox = ({id, keyword, onClick}:any) => {
         </button>
     )
 };
+
+export const ColorfulKerwordBox = ({fontSize, margin, keyword, color}:any) => {
+    return (
+        <span style={{
+            border: '0px solid',
+            borderRadius: '7px',
+            height: '30px',
+            lineHeight:'30px',
+            padding:'0 18px',
+            width:'fit-content',
+            backgroundColor: color,
+            color: 'black',
+            margin: margin,
+            fontSize: fontSize
+        }}>
+            {keyword}
+        </span>
+    )
+};

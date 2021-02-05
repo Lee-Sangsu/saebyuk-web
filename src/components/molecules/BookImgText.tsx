@@ -1,6 +1,6 @@
 import BookCover from 'components/atoms/Imgs/BookCover';
 import BookMakers from 'components/atoms/Texts/BookMakers';
-import BookTitle from 'components/atoms/Texts/BookTitle';
+import {BookTitle} from 'components/atoms/Texts/Titles';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 export const RegisterBookImgText = ({item}:any) => {
@@ -32,7 +32,7 @@ export const RegisterBookImgText = ({item}:any) => {
 export const ArchiveBookImgText = ({item}:any) => {
     const history = useHistory();
     const watchBookInfo = () => {
-        history.push(`/book/info/item?id=${item.title}`, {
+        history.push(`/book/info/item?title=${item.title}`, {
             item
         });
     }
@@ -43,7 +43,7 @@ export const ArchiveBookImgText = ({item}:any) => {
             width:'180px',
             minHeight: '200px',
             alignItems: 'flex-start',
-            padding: '20px'
+            padding: '20px 20px 20px 20px'
         }}>
             <BookCover onClick={watchBookInfo} className="book-cover" src={item.thumbnail_image} width='100px' height='132px' margin='0 0' />
             <div style={{
@@ -57,7 +57,7 @@ export const ArchiveBookImgText = ({item}:any) => {
                 <BookMakers makers={`${item.author}`} fontSize='11px' /> 
                 <span style={{
                     fontSize: '8px',
-                    color:'#FABA00'
+                    color:item.book.borrow_available ?'#FABA00': "#5CB8E1"
                 }}>{item.book.borrow_available ? "대출 가능" : '대출 중'}</span>
             </div>
         </div>

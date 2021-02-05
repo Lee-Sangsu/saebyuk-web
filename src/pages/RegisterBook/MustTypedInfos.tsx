@@ -1,6 +1,6 @@
 
 import {TextInput} from 'components/atoms/TextInputs';
-import AlertTitle from 'components/atoms/Texts/AlertTitle';
+import {AlertTitle} from 'components/atoms/Texts/Titles';
 import {RegisterBookImgText} from 'components/molecules/BookImgText';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';
 import React from 'react';

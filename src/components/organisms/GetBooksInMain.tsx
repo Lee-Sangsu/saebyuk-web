@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { ArchiveBookImgText } from 'components/molecules/BookImgText';
-import { RowFlex } from 'styles/FlexStyles';
+import { ColumnFlex, RowFlex } from 'styles/FlexStyles';
 import 'styles/Hovers.css';
+import { SubTitle } from 'components/atoms/Texts/Titles';
 
 const GetBooksInMain = () => {
     const [books, setBooks] = React.useState<Array<object>>([]);
@@ -27,8 +28,10 @@ const GetBooksInMain = () => {
     }, [getBooks])
 
     return (
-        <div>
-            <h1>취향별 추천 도서</h1>
+        <div style={{
+            ...ColumnFlex
+        }}>
+            <SubTitle fontSize="20px" fontWeight="bolder" margin="25px 0 0 10%" text="취향별 추천 도서" />
             <div className="books-container" style={{
                 ...RowFlex,
                 marginLeft:'10%',

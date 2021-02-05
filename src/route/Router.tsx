@@ -8,6 +8,7 @@ import { MustTypedInfos } from 'pages/RegisterBook/MustTypedInfos';
 import ReqOrRegBook from 'pages/ReqOrRegBook';
 import Navigator from './Navigator';
 import { BookInfo } from 'pages/BookInfo';
+import { ReturnBook } from 'pages/ReturnBook';
 
 const AppRouter = () => {
     return (
@@ -25,6 +26,9 @@ const AppRouter = () => {
                 </Route>
                 <Route exact path="/book/request-or-faq">
                     <ReqOrRegBook />
+                </Route>
+                <Route exact path="/book/return">
+                    <ReturnBook />
                 </Route>
                 <Route exact path="/book/register/keyword/">
                     <InputKeywords />

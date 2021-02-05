@@ -1,5 +1,5 @@
 import React from 'react';
-import SubTitle from 'components/atoms/Texts/SubTitle';
+import { SubTitle } from 'components/atoms/Texts/Titles';
 import {TextInput} from 'components/atoms/TextInputs';
 import {RequestBookBtn} from 'components/atoms/Btns';
 import axios from 'axios';
@@ -72,16 +72,16 @@ const RequestBook = () => {
                 <h3>{`읽고 싶은 책을 알려주세요! ☺️`}</h3>
             </div>
 
-            <SubTitle margin='10px 0' text="도서명*" />
+            <SubTitle fontSize="15px" margin='10px 0' text="도서명*" />
             <TextInput value={bookTitle} placeholder='도서명 입력' onChange={(e:any) => setBookTitle(e.target.value)} />
 
-            <SubTitle margin='20px 0px 5px 0px' text="저자*" />
+            <SubTitle fontSize="15px" margin='20px 0px 5px 0px' text="저자*" />
             <TextInput value={bookAuthor} placeholder='저자 입력' onChange={(e:any) => setBookAuthor(e.target.value)} />
             
-            <SubTitle margin='20px 0px 5px 0px' text="관심 분야" />
+            <SubTitle fontSize="15px" margin='20px 0px 5px 0px' text="관심 분야" />
             <TextInput value={interestedSection} placeholder='관심 분야 입력' onChange={(e:any) => setInterestedSection(e.target.value)} />
 
-            <SubTitle margin='20px 0px 5px 0px' text="기타" />
+            <SubTitle fontSize="15px" margin='20px 0px 5px 0px' text="기타" />
             <TextInput value={etcInfo} placeholder='기타 정보 입력' onChange={(e:any) => setEtcInfo(e.target.value)} />
 
             <RequestBookBtn id="request-btn" text="신청" onClick={requestBook} margin="20px 0 0 0" />

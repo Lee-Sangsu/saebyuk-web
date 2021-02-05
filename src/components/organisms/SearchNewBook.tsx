@@ -2,7 +2,7 @@ import React from 'react';
 import SearchResults from 'components/molecules/SearchResult';
 import BookInfo from 'interfaces/BookInfo';
 import axios from 'axios';
-import SubTitle from 'components/atoms/Texts/SubTitle';
+import { SubTitle } from 'components/atoms/Texts/Titles';
 import {TextInput} from 'components/atoms/TextInputs';
 
 const SearchNewBook = () => {
@@ -19,6 +19,7 @@ const SearchNewBook = () => {
         // `${process.env.REACT_APP_KAKAO_REST_KEY}`;
         
         axios.get('https://dapi.kakao.com/v3/search/book?target=title', {
+            // 카카오가 별로기 때문에 -> 네이버 api: https://openapi.naver.com/v1/search/book.json
             headers : {
                 'Authorization': `KakaoAK ${kakaoAuthKey}`,
                 'content-type': 'application/x-www-form-urlencoded'
@@ -37,13 +38,40 @@ const SearchNewBook = () => {
                 var year = data.datetime.slice(0,4);
                 var month = data.datetime.slice(6,7);
                 const isbn = data.isbn.split(" ");
-                
+                var authors = "";
+                if(data.authors.length > 0) {
+                    if (data.authors.length > 1){
+                        for(var i=0; i < data.authors.length; i++){
+                            if (i === data.authors.length -1) {
+                                authors += `${data.authors[i]}`;
+                            } else {
+                                authors += `${data.authors[i]}, `;
+                            }
+                        }
+                    } else {
+                        authors += `${data.authors[0]}`;
+                    }
+                }   
+                var translators = "";
+                if(data.translators.length > 0) {
+                    if(data.translators.length > 1) {
+                        for(var v=0; v < data.translators.length; v++){
+                            if (v === data.translators.length - 1){
+                                translators += `${data.translators[v]}`;
+                            } else {
+                                translators += `${data.translators[v]}, `;
+                            }
+                        }
+                    } else {
+                        translators += `${data.translators[0]}`;
+                    }
+                }                
                 const bookObj:BookInfo = {
                     id: getId() ,
                     isbn: isbn[0],
                     title : data.title,
-                    authors: data.authors.toString(),
-                    translators: data.translators.toString(),
+                    authors: authors,
+                    translators: translators,
                     publisher: data.publisher,
                     published_date: `${year}년 ${month}월`,
                     thumbnail_image: data.thumbnail,
@@ -86,13 +114,13 @@ const SearchNewBook = () => {
                 <h3>{`${window.localStorage.getItem('user')}님, 새로운 책을 등록할 수 있어요 ☺️`}</h3>
             </div>
 
-            <SubTitle margin='10px 0' text="도서 검색" />
+            <SubTitle fontSize="15px" margin='10px 0' text="도서 검색" />
 
             <TextInput value={query} onClick={() => {
                 document.getElementById("search-res-container")!.style.display = 'flex';
             }} placeholder='도서명 또는 저자 입력' onChange={(e:any) => serQuery(e.target.value)} />
 
-            <SubTitle margin='20px 0px 5px 0px' text="도서 목록" />
+            <SubTitle fontSize="15px" margin='20px 0px 5px 0px' text="도서 목록" />
 
             <div id="search-res-container" style={{
                 display:'none',

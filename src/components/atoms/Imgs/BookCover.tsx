@@ -6,7 +6,7 @@ const BookCover = ({onClick, className, src, width, height, margin}:any) => {
             height:height,
             width:width,
             margin: margin,
-            marginRight: '15px',
+            // marginRight: '15px',
             border: '1px solid #707070',
             borderTopRightRadius:'10px',
             borderBottomRightRadius:'10px'

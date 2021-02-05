@@ -3,13 +3,16 @@ import React from 'react';
 import AppRouter from 'route/Router';
 
 function App() {
+
   React.useEffect(( ) => {
     window.Kakao.init(`${process.env.REACT_APP_KAKAO_JS_KEY}`);
     window.Kakao.isInitialized();
   }, []);
-
+  
   return (
-    <div className="App">
+    <div style={{
+      minWidth: '855px'
+    }} className="App">
       <AppRouter />
     </div>
   );

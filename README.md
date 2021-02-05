@@ -12,3 +12,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - 책 대출/반납 api 통신 체크
 - [InputKeywords.tsx] 에 키워드 추가하는 기능 만들기
 - [GetBooksInMain.tsx] 에 키워드별로 필터링 하기.
+- [Navigator.tsx] 스타일 수정.
+- Some new tech..?

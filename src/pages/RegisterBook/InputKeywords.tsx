@@ -1,4 +1,4 @@
-import AlertTitle from 'components/atoms/Texts/AlertTitle';
+import {AlertTitle} from 'components/atoms/Texts/Titles';
 import {RegisterBookImgText} from 'components/molecules/BookImgText';
 import NewBookKeywords from 'components/organisms/NewBookKeywords';
 import RegisterNavigator from 'components/organisms/RegisterNavigator';

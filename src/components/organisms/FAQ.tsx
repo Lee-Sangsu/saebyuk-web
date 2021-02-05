@@ -1,5 +1,5 @@
 import React from 'react';
-import SubTitle from 'components/atoms/Texts/SubTitle';
+import {SubTitle} from 'components/atoms/Texts/Titles';
 import {TextInput, TextArea} from 'components/atoms/TextInputs';
 import {RequestBookBtn} from 'components/atoms/Btns';
 import axios from 'axios';
