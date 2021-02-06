@@ -16,7 +16,7 @@ const SelectGenreOfNewBook = () => {
 
     React.useEffect(() => {
         setEmpty(true);
-    }, []);
+    }, [setEmpty]);
     
 
     const onKeywordClick = (event:any) => {

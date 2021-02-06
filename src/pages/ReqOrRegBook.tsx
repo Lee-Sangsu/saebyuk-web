@@ -1,15 +1,12 @@
 import React from 'react';
 import SearchNewBook from 'components/organisms/SearchNewBook';
 import RequestBook from 'components/organisms/RequestBook';
-import { useHistory } from 'react-router-dom';
 import FAQ from 'components/organisms/FAQ';
+import { BlockUnauthorizedUsers } from 'route/BlockUnAuthorizedUsers';
 
 const ReqOrRegBook = () => {
-    const history = useHistory();
-    if(window.localStorage.getItem('user') === null || undefined){
-        window.alert("로그인이 필요합니다.");
-        history.push('/');
-    }
+    BlockUnauthorizedUsers();
+
     const userNickName = window.localStorage.getItem('user');
 
     return (

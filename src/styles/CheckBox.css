@@ -1,0 +1,57 @@
+.checkboxFour {
+  width: 25px;
+  height: 25px;
+  /* position: absolute; */
+  background: #ddd;
+  /* margin: 20px 90px; */
+  border-radius: 100%;
+  position: relative;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#circle-checkbox {
+  z-index: 3;
+  opacity: 0;
+}
+
+.checkboxFour .check-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #707070;
+  font-family: arial;
+  font-size: 20px;
+  font-weight: 600;
+  -ms-transform: scaleX(-1) rotate(-35deg); /* IE 9 */
+  -webkit-transform: scaleX(-1) rotate(-35deg);
+  transform: scaleX(-1) rotate(-35deg);
+  width: 24.5px;
+  height: 24.5px;
+  border-radius: 100%;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  background: white;
+  border: #707070 solid 2.5px;
+}
+
+.checkboxFour input[type="checkbox"]:checked + label {
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  background: #5cb8e1;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+}

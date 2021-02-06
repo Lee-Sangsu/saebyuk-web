@@ -13,6 +13,7 @@ const GetBooksInMain = () => {
         // newBook
         axios.get(`${process.env.REACT_APP_BASE_URL}/book/main/`)
         .then((res:any) => {
+            console.log(res);
             // console.log(typeof(res.data));
             // console.log(Array.isArray(res.data));
             res.data.forEach( (item:object) => {
@@ -38,7 +39,7 @@ const GetBooksInMain = () => {
                 // Netflix Slide 넣어야 함.
                 overflowY:'scroll'
             }}>
-                {dataLoaded ? books.map((item, index) => <ArchiveBookImgText key={index} item={item} />) : <span>책 정보 불러오는 중 ...</span>}
+                {dataLoaded ? books.map((item, index) => <ArchiveBookImgText key={index} onClick="watchBook" item={item} />) : <span>책 정보 불러오는 중 ...</span>}
             </div>
 
         </div>

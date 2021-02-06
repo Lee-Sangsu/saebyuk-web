@@ -182,24 +182,43 @@ export const SignInBtn = () =>{
   );
 };
 
+const BorRetBtnStyle: object = {
+    minWidth: '190px',
+    height: '55px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '23px',
+    borderWidth: '0',
+    borderRadius: '13px',
+    boxShadow: 'rgb(203 203 203) 2.5px 2.5px 7px'
+};
+
 export const BorrowBookBtn = ({borrowAvailable, onClick}: any) => {
     const returnNothing = ():void => {return ;};
     return (
         <button onClick={borrowAvailable ? onClick : returnNothing} style={{
-            minWidth: '190px',
-            height: '55px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            ...BorRetBtnStyle,
             backgroundColor: borrowAvailable? 'black' : '#DFDFDF',
             color: borrowAvailable ? 'white' : '#C2C3CB',
-            fontSize: '23px',
-            borderWidth: '0',
-            borderRadius: '13px',
-            cursor: borrowAvailable ? 'pointer' : 'none',
-            boxShadow: 'rgb(203 203 203) 2.5px 2.5px 7px'
+            cursor: borrowAvailable ? 'pointer' : 'none'
         }}>
             대출하기
         </button>
     );
 };
+
+export const ReturnBookBtn = ({returnBook, checkedBook}:any) => {
+    return(
+        <button style={{
+            ...BorRetBtnStyle,
+            backgroundColor: checkedBook? 'black' : '#DFDFDF',
+            color: checkedBook ? 'white' : '#C2C3CB',
+            cursor: checkedBook ? 'pointer' : 'none',
+            width:'225px'
+        }} onClick={returnBook}>
+            반납하기
+        </button>
+    )
+    
+}

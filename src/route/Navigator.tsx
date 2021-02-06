@@ -49,7 +49,10 @@ const Navigator = () => {
 
             <li style={liStyle}>
                 {window.localStorage.getItem('user') === null || window.localStorage.getItem('user') === undefined ? 
+                <>
                 <SignInBtn />
+                {console.log(window.localStorage.getItem('user') )}
+                </>
                 :   
                 <h5>로그아웃</h5>
                 }

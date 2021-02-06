@@ -13,9 +13,10 @@ import { useHistory } from "react-router-dom";
 export const BookMainInfoOrg = ({item}:any) => {
     // console.log(item);
     const history = useHistory();
+    const bookInfo = item.book_info;
     const borrowThisBook = () => {
         const csrftoken = Cookies.get('csrftoken');
-        axios.post(`${process.env.REACT_APP_BASE_URL}/book/borrow/${item.book.isbn}/`, {
+        axios.post(`${process.env.REACT_APP_BASE_URL}/book/borrow/${item.isbn}/`, {
             headers:{
                 "Access-Control-Allow-Origin": '*',
                 'Accept': 'application/json',
@@ -29,6 +30,7 @@ export const BookMainInfoOrg = ({item}:any) => {
         })
         .then((res) => {
             const currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 7)
             window.alert(`대출 기한은 일주일입니다. ${currentDate.getMonth()+1}월 ${currentDate.getDate()}일 까지 
 도서관 새벽으로
 반납해주시기 바랍니다.`)
@@ -43,7 +45,7 @@ export const BookMainInfoOrg = ({item}:any) => {
             width:'68%',
             padding: '35px 0'
         }}>
-            <BookCover margin="0 4% 0 0" src={item.thumbnail_image} width="184px" height="275px" />
+            <BookCover margin="0 4% 0 0" src={bookInfo.thumbnail_image} width="184px" height="275px" />
             <div style={{
                 ...ColumnFlex,
                 width:'100%',
@@ -57,11 +59,11 @@ export const BookMainInfoOrg = ({item}:any) => {
                     justifyContent: 'space-around',
                     paddingLeft: '10px'
                 }}>
-                    <BookTitle title={`${item.title}`} fontSize="30px" width="60%" />
-                    <BookMakers fontWeight="500" makers={`저자 | ${item.author}`} fontSize="14px" />
-                    <BookMakers fontWeight="500" makers={`출판사 | ${item.publisher}`} fontSize="14px" />
-                    <BookMakers fontWeight="500" makers={`출간일 | ${item.published_date}`} fontSize="14px" />
-                    <BookMakers fontWeight="500" makers={`페이지 | ${item.page}쪽`} fontSize="14px" />
+                    <BookTitle title={`${bookInfo.title}`} fontSize="30px" width="60%" />
+                    <BookMakers fontWeight="500" makers={`저자 | ${bookInfo.author}`} fontSize="14px" />
+                    <BookMakers fontWeight="500" makers={`출판사 | ${bookInfo.publisher}`} fontSize="14px" />
+                    <BookMakers fontWeight="500" makers={`출간일 | ${bookInfo.published_date}`} fontSize="14px" />
+                    <BookMakers fontWeight="500" makers={`페이지 | ${bookInfo.page}쪽`} fontSize="14px" />
                 </div>
                 <div style={{
                     ...RowFlex,
@@ -74,11 +76,13 @@ export const BookMainInfoOrg = ({item}:any) => {
                         // width:'100%'
                     }}>
                         <SubTitle margin='0 5px 10px 5px' fontSize="17px" text="키워드 Pick:" />
-                        {item.keyword.map((keyword:any, index:number) => 
-                            <ColorfulKerwordBox key={index} fontSize="14px" margin='0 10px 0 5px' keyword={keyword} color={getRandomLightColor()} />
-                        )}
+                        <div style={RowFlex}>
+                            {bookInfo.keyword.map((keyword:any, index:number) => 
+                                <ColorfulKerwordBox key={index} fontSize="14px" margin='0 10px 0 5px' keyword={keyword} color={getRandomLightColor()} />
+                            )}
+                        </div>
                     </div>
-                    <BorrowBookBtn borrowAvailable={item.book.borrow_available} onClick={borrowThisBook} />
+                    <BorrowBookBtn borrowAvailable={item.borrow_available} onClick={borrowThisBook} />
                 </div>
             </div>
 
@@ -106,6 +110,8 @@ export const PulMuLink = ({item}:any) => {
 };
 
 export const BookSpecificInfos = ({item}:any) => {
+    const bookInfo = item.book_info;
+    console.log(item)
     return (
         <div style={{
             ...ColumnFlex,
@@ -119,14 +125,14 @@ export const BookSpecificInfos = ({item}:any) => {
                 ...grayText,
                 lineHeight: '20px',
                 textIndent: '5px'
-            }}>{item.subtitle}</span>
+            }}>{bookInfo.subtitle}</span>
             <SubTitle margin='65px 0 15px 0' fontSize="28px" text="책 소개" />
             <span style={{
                 ...grayText,
                 lineHeight: '26px',
                 textIndent: '5px',
                 wordBreak: 'keep-all',
-            }}>{item.description}</span>
+            }}>{bookInfo.description}</span>
 
 
         </div>
