@@ -4,11 +4,24 @@ import ProfileState from 'states/ProfileState';
 import {useRecoilValue} from 'recoil';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { TextInput } from "components/atoms/TextInputs";
+import { SignUpBtn } from "components/atoms/Btns";
+import {  ColumnFlex, RowFlex } from "styles/FlexStyles";
+import { AlertTitle } from "components/atoms/Texts/Titles";
 
 const SignUp = () => {
     const [gSchoolNickname, setNickname] = React.useState('');
     const history = useHistory();
     const profile = useRecoilValue(ProfileState);
+    const [isWritten, setWritten] = React.useState(false);
+
+    React.useEffect(() => {
+        if (gSchoolNickname.length > 1){
+            setWritten(true);
+        } else {
+            setWritten(false);
+        }
+    }, [gSchoolNickname, setWritten])
     
     const signUp = () => {
         console.log(profile);
@@ -39,9 +52,19 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <input type="text" value={gSchoolNickname} onChange={(e) => setNickname(e.target.value)} maxLength={2} />
-            <button onClick={ signUp}>회원 가입</button>
+        <div style={{
+            ...ColumnFlex, 
+            width: '100%',
+            height: '600px',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            paddingTop: '60px'
+        }}>
+            <AlertTitle text="회원가입" />
+            <div style={{...RowFlex, alignItems:'center', paddingTop: '130px'}}>
+                <TextInput value={gSchoolNickname} onChange={(e:any) => setNickname(e.target.value)} maxLength={2} placeholder="거꾸로캠퍼스에서 사용하는 별명을 입력해주세요." />
+                <SignUpBtn isWritten={isWritten} signUp={signUp} />
+            </div>
         </div>
     )
 };

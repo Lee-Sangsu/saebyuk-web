@@ -4,6 +4,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import {useSetRecoilState} from 'recoil';
 import ProfileState from 'states/ProfileState';
+import { BorRetBtnStyle, loginBtnStyle } from "styles/FlexStyles";
+import InitializeState from 'states/InitializeState';
 
 export const NextorBackBtn = ({isEmpty, text, to}:any) => {
     return (
@@ -135,6 +137,7 @@ declare global {
 export const SignInBtn = () =>{
   const history = useHistory();
   const setProfile = useSetRecoilState(ProfileState);
+  const setInit = useSetRecoilState(InitializeState);
 
   const signInProcess = () => {
     axios.defaults.xsrfCookieName = "csrftoken"
@@ -163,10 +166,13 @@ export const SignInBtn = () =>{
             console.log(res.data);
             setProfile(res.data); 
             history.push("/sign-up");
+            setInit(true);
           } else if (res.status === 200) {
             console.log(res.data);
             window.localStorage.setItem('user', res.data.user.g_school_nickname);
             window.alert("login completed");
+            window.localStorage.setItem('profile_img', res.data.user.profile_image);
+            setInit(true);
           }
         })
         .catch((err) => console.log(err))
@@ -178,30 +184,53 @@ export const SignInBtn = () =>{
   };
 
   return (
-    <button onClick={signInProcess}>로그인</button>
+    <button style={loginBtnStyle} onClick={signInProcess}>로그인</button>
   );
 };
 
-const BorRetBtnStyle: object = {
-    minWidth: '190px',
-    height: '55px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: '23px',
-    borderWidth: '0',
-    borderRadius: '13px',
-    boxShadow: 'rgb(203 203 203) 2.5px 2.5px 7px'
+export const SignOutBtn = () => {
+    const history = useHistory();
+    const setInit = useSetRecoilState(InitializeState);
+
+    const onSignOutClick = () => {
+        if (window.Kakao.Auth.getAccessToken()) {
+            window.Kakao.Auth.logout(function() {
+                window.localStorage.removeItem('user');
+                history.push("/");
+                setInit(true);
+                return ;
+            }); 
+        } else {
+            window.localStorage.removeItem('user');
+            history.push("/");
+            setInit(true);
+        }
+    };
+    return (
+        <button style={loginBtnStyle} onClick={onSignOutClick}>로그아웃</button>
+    )
+};
+const returnNothing = ():void => {return ;};
+
+export const SignUpBtn = ({isWritten, signUp}:any) => {
+    return (
+        <button style={{
+            ...loginBtnStyle,
+            backgroundColor: isWritten? '#333333' : '#DFDFDF',
+            color: isWritten ? 'white' : '#C2C3CB',
+            cursor: isWritten ? 'pointer': 'default',
+            transition: '0.2s ease-in'
+        }} onClick={isWritten ? signUp : returnNothing}>회원가입</button>
+    )
 };
 
 export const BorrowBookBtn = ({borrowAvailable, onClick}: any) => {
-    const returnNothing = ():void => {return ;};
     return (
         <button onClick={borrowAvailable ? onClick : returnNothing} style={{
             ...BorRetBtnStyle,
             backgroundColor: borrowAvailable? 'black' : '#DFDFDF',
             color: borrowAvailable ? 'white' : '#C2C3CB',
-            cursor: borrowAvailable ? 'pointer' : 'none'
+            cursor: borrowAvailable ? 'pointer' : 'default'
         }}>
             대출하기
         </button>
@@ -214,7 +243,7 @@ export const ReturnBookBtn = ({returnBook, checkedBook}:any) => {
             ...BorRetBtnStyle,
             backgroundColor: checkedBook? 'black' : '#DFDFDF',
             color: checkedBook ? 'white' : '#C2C3CB',
-            cursor: checkedBook ? 'pointer' : 'none',
+            cursor: checkedBook ? 'pointer' : 'default',
             width:'225px'
         }} onClick={returnBook}>
             반납하기

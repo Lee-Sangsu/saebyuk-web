@@ -5,7 +5,6 @@ import { ArchiveBookImgText } from 'components/molecules/BookImgText';
 import { SubTitle } from "components/atoms/Texts/Titles";
 import { ReturnBookBtn } from "components/atoms/Btns";
 import { useHistory } from "react-router-dom";
-import { BlockUnauthorizedUsers } from "route/BlockUnAuthorizedUsers";
 
 interface BookModel{
     isbn:string,
@@ -25,27 +24,36 @@ function replaceItemAtIndex(arr:any, index:number, newValue:boolean) {
 
   
 export const ReturnBook = () => {
+    const history = useHistory();
+    React.useEffect(() => {
+        if (window.localStorage.getItem('user') === null || window.localStorage.getItem('user') ===  undefined) {
+        history.goBack();
+        window.alert("로그인이 필요합니다"); 
+    }}, [history])
+
     const [books, setBooks] = React.useState<Array<Book>>([]);
     const [dataLoaded, setDataLoaded] = React.useState<boolean>(false);
     const [check, setCheck] = React.useState<Array<boolean>>([]);
     const [checkedAnyBook, setCheckedAnyBook] = React.useState<boolean>(false);
 
-    const history = useHistory();
-    BlockUnauthorizedUsers();
 
     const getBooks = React.useCallback(() => {
         // newBook
-        axios.get(`${process.env.REACT_APP_BASE_URL}/book/borrowed/${window.localStorage.getItem('user')}/`)
-        .then((res:any) => {
-            console.log(res);
-            // console.log(Array.isArray(res.data));
-            res.data.forEach( (item:Book) => {
-                setBooks(prev => [...prev, item]);
-                setCheck(prev => [...prev, false]);
+        if (window.localStorage.getItem('user') === null) {
+            return ;
+        } else {
+            axios.get(`${process.env.REACT_APP_BASE_URL}/book/borrowed/${window.localStorage.getItem('user')}/`)
+            .then((res:any) => {
+                console.log(res);
+                // console.log(Array.isArray(res.data));
+                res.data.forEach( (item:Book) => {
+                    setBooks(prev => [...prev, item]);
+                    setCheck(prev => [...prev, false]);
+                })
+                setDataLoaded(true);
             })
-            setDataLoaded(true);
-        })
-        .catch((err) => console.log(err))
+            .catch((err) => console.log(err))
+        }
     }, []);
 
     React.useEffect(( ) => {
@@ -61,7 +69,6 @@ export const ReturnBook = () => {
     }, [check])
 
     function checkThisBook(event:any) {
-        // event.preventDefault();
         const checkedInput = Number(event.target.name);
         const newList = replaceItemAtIndex(check, checkedInput, !check[checkedInput])
         setCheck(newList);
@@ -100,7 +107,13 @@ export const ReturnBook = () => {
                     <ArchiveBookImgText key={index} index={index} isReturn={true} value={check[index]} onCheck={checkThisBook} item={item.book} />
                 ) : <span>책 정보 불러오는 중 ...</span>}
             </div>
-            <ReturnBookBtn returnBook={returnBook} checkedBook={checkedAnyBook} />
+            <div style={{
+                ...RowFlex,
+                width:'90%',
+                justifyContent: 'flex-end'
+            }}>
+                <ReturnBookBtn returnBook={returnBook} checkedBook={checkedAnyBook} />
+            </div>
         </div>
     )
 };

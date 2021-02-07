@@ -17,10 +17,12 @@
 #circle-checkbox {
   z-index: 3;
   opacity: 0;
+  cursor: pointer;
 }
 
 .checkboxFour .check-mark {
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   color: #707070;

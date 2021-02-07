@@ -1,0 +1,27 @@
+.search-icon-div {
+  cursor: pointer;
+}
+.circle {
+  border-width: 2px;
+  border-radius: 100%;
+  border-style: solid;
+  border-left-color: #faba00;
+  border-bottom-color: #faba00;
+  border-right-color: #85c2de;
+  border-top-color: #85c2de;
+  width: 12px;
+  height: 12px;
+  z-index: 2;
+}
+
+.bar {
+  border-width: 0px;
+  background-color: #5d5d5d;
+  width: 3px;
+  height: 9px;
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 14.5px;
+  border-radius: 5px;
+  transform: rotate(-45deg);
+}

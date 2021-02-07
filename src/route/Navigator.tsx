@@ -1,4 +1,6 @@
-import { SignInBtn } from 'components/atoms/Btns';
+import { SignInBtn, SignOutBtn } from 'components/atoms/Btns';
+import { SearchIcon } from 'components/atoms/Icons';
+import { UserProfile } from 'components/atoms/Imgs/UserProfile';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RowFlex } from 'styles/FlexStyles';
@@ -13,39 +15,52 @@ const Navigator = () => {
     
     const liStyle:object = {
         display:'inline-flex', 
-        margin: '0 20px'
+        margin: '0 2%'
     };
 
     return (
         <ul style={{
             ...RowFlex,
-            width: '100%',
+            width: '94%',
             height: '85px',
             alignItems: 'center',
+            justifyContent: 'space-between',
             margin: 0, 
-            borderBottom: '2px solid black',
-            paddingInlineStart: '3%'
+            marginBlock: 0,
+            padding: '0 3%',
+            borderBottom: '2px solid black'
         }} className="nav">
-            <li style={liStyle}>
-                <Link style={linkStyle} to="/">
-                    새벽 로고
-                </Link>
-            </li>
-            <li style={liStyle}>
-                <Link style={linkStyle} to="/book/return/">
-                    반납
-                </Link>
-            </li>
-            <li style={liStyle}>
-                <Link style={linkStyle} to="/sign-up">
-                    내 서재
-                </Link>
-            </li>
-            <li style={liStyle}>
-                <Link style={linkStyle} to="/book/request-or-faq">
-                    신청 및 문의
-                </Link>
-            </li>
+            <div style={{
+                ...RowFlex,
+                justifyContent: 'space-around',
+                // width: '40%'
+                minWidth: '470px'
+                // position:'absolute'
+            }}>
+                <li style={liStyle}>
+                    <Link style={linkStyle} to="/">
+                        새벽 로고
+                    </Link>
+                </li>
+                <li style={liStyle}>
+                    <Link style={linkStyle} to="/book/return/">
+                        반납
+                    </Link>
+                </li>
+                <li style={liStyle}>
+                    <Link style={linkStyle} to="/sign-up">
+                        내 서재
+                    </Link>
+                </li>
+                <li style={liStyle}>
+                    <Link style={linkStyle} to="/book/request-or-faq">
+                        신청 및 문의
+                    </Link>
+                </li>
+                <li style={liStyle}>
+                    <SearchIcon />
+                </li>
+            </div>
 
             <li style={liStyle}>
                 {window.localStorage.getItem('user') === null || window.localStorage.getItem('user') === undefined ? 
@@ -54,7 +69,10 @@ const Navigator = () => {
                 {console.log(window.localStorage.getItem('user') )}
                 </>
                 :   
-                <h5>로그아웃</h5>
+                <div style={{...RowFlex, alignItems: 'center'}}>
+                    <UserProfile />
+                    <SignOutBtn />
+                </div>
                 }
             </li>
         </ul>

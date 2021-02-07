@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const TextInput = ({value, onChange, placeholder, onClick}:any) => {
+export const TextInput = ({maxLength, value, onChange, placeholder, onClick}:any) => {
 
     return (
-        <input type="text" value={value} onClick={onClick} placeholder={`${placeholder}`} onChange={onChange} style={{
+        <input type="text" value={value} onClick={onClick} placeholder={`${placeholder}`} onChange={onChange} maxLength={maxLength} style={{
             display:'flex',
             width:'290px',
             height:'35px',

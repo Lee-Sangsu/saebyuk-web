@@ -2,10 +2,15 @@ import React from 'react';
 import SearchNewBook from 'components/organisms/SearchNewBook';
 import RequestBook from 'components/organisms/RequestBook';
 import FAQ from 'components/organisms/FAQ';
-import { BlockUnauthorizedUsers } from 'route/BlockUnAuthorizedUsers';
+import { useHistory } from 'react-router-dom';
 
 const ReqOrRegBook = () => {
-    BlockUnauthorizedUsers();
+    const history = useHistory();
+    React.useEffect(() => {
+        if (window.localStorage.getItem('user') === null || window.localStorage.getItem('user') ===  undefined) {
+        history.goBack();
+        window.alert("로그인이 필요합니다"); 
+    }}, [history])
 
     const userNickName = window.localStorage.getItem('user');
 
