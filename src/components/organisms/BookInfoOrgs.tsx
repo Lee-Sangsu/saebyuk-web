@@ -111,7 +111,7 @@ export const PulMuLink = ({item}:any) => {
 
 export const BookSpecificInfos = ({item}:any) => {
     const bookInfo = item.book_info;
-    console.log(item)
+    // console.log(item)
     return (
         <div style={{
             ...ColumnFlex,

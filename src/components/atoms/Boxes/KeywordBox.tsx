@@ -30,6 +30,27 @@ export const KeywordBox = ({id, keyword, onClick}:any) => {
     )
 };
 
+export const GenreBox = ({id, keyword, filter, setFilter}:any) => {
+
+    const btnClicked = (event:any) => {
+        setFilter(event.target.value);
+    };
+
+    return (
+        <button className="keyword-box" id={id} value={keyword} onClick={btnClicked} style={{
+            border:'1px solid black',
+            borderRadius: '15px',
+            padding:'0 15px',
+            height:'35px',
+            margin: '0 15px 0 0',
+            color: filter === keyword ? "white" : "black" ,
+            backgroundColor: filter === keyword ? "black" : "white"
+        }}>
+            {keyword}
+        </button>
+    )
+};
+
 export const ColorfulKerwordBox = ({fontSize, margin, keyword, color}:any) => {
     return (
         <span style={{

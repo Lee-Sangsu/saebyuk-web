@@ -1,6 +1,6 @@
 import {atom} from 'recoil';
 
-const InitState = atom({
+export const InitState = atom({
     key: 'InitState',
     default: false
 });

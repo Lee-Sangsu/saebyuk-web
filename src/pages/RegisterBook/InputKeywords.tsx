@@ -13,7 +13,6 @@ const InputKeywords = () => {
     const locationState = useLocation().state;
     const item = JSON.parse(JSON.stringify(locationState)).item;
     // add keywords 때 setKeywords 사용
-    // eslint-disable-next-line
     const [keywords, setKeywords] = React.useState<Array<string>>(['유익한', '감동적인', '영감을 주는']);
     var keywordChecked = [false, false, false, false];
     const setEmpty = useSetRecoilState(EmptyState);
@@ -22,7 +21,7 @@ const InputKeywords = () => {
         setEmpty(true);
     }, [setEmpty]);
 
-    console.log(item);
+    // console.log(item);
     return (
         <div style={{
             display:'flex',

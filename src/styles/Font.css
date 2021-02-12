@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "AppleSDGothicNeoM";
+  src: url("/src/assets/AppleSDGothicNeoM.ttf");
+}
+body,
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+ul,
+button {
+  font-family: "AppleSDGothicNeoM", sans-serif;
+}

@@ -170,9 +170,9 @@ export const SignInBtn = () =>{
           } else if (res.status === 200) {
             console.log(res.data);
             window.localStorage.setItem('user', res.data.user.g_school_nickname);
-            window.alert("login completed");
             window.localStorage.setItem('profile_img', res.data.user.profile_image);
-            setInit(true);
+            window.location.reload();
+            window.alert("login completed");
           }
         })
         .catch((err) => console.log(err))
@@ -190,21 +190,20 @@ export const SignInBtn = () =>{
 
 export const SignOutBtn = () => {
     const history = useHistory();
-    const setInit = useSetRecoilState(InitializeState);
 
     const onSignOutClick = () => {
         if (window.Kakao.Auth.getAccessToken()) {
             window.Kakao.Auth.logout(function() {
                 window.localStorage.removeItem('user');
-                history.push("/");
-                setInit(true);
-                return ;
-            }); 
+            });
         } else {
             window.localStorage.removeItem('user');
-            history.push("/");
-            setInit(true);
         }
+        setTimeout(() => {
+            window.location.reload();
+            history.push('/');
+            window.alert("Logout Complete");
+        }, 400)
     };
     return (
         <button style={loginBtnStyle} onClick={onSignOutClick}>로그아웃</button>
@@ -216,6 +215,9 @@ export const SignUpBtn = ({isWritten, signUp}:any) => {
     return (
         <button style={{
             ...loginBtnStyle,
+            width: '200px',
+            height: '35px',
+            margin: '30px 0',
             backgroundColor: isWritten? '#333333' : '#DFDFDF',
             color: isWritten ? 'white' : '#C2C3CB',
             cursor: isWritten ? 'pointer': 'default',

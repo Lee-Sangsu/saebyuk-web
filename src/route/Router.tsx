@@ -9,6 +9,7 @@ import ReqOrRegBook from 'pages/ReqOrRegBook';
 import Navigator from './Navigator';
 import { BookInfo } from 'pages/BookInfo';
 import { ReturnBook } from 'pages/ReturnBook';
+import { MyLibrary } from 'pages/MyLibrary';
 
 const AppRouter = () => {
     return (
@@ -20,6 +21,9 @@ const AppRouter = () => {
                 </Route>
                 <Route exact path="/sign-up">
                     <SignUp />
+                </Route>
+                <Route exact path="/my-library">
+                    <MyLibrary />
                 </Route>
                 <Route exact path="/book/info/:item?">
                     <BookInfo />
@@ -36,9 +40,10 @@ const AppRouter = () => {
                 <Route exact path="/book/register/etc-infos/">
                     <MustTypedInfos />
                 </Route>
-                <Route path="/book/register/:item?">
+                <Route exact path="/book/register/:item?">
                     <SelectGenreOfNewBook />
                 </Route>
+                
             </Switch>
         </BrowserRouter>
     )

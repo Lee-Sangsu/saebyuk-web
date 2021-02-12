@@ -5,6 +5,8 @@ import { ArchiveBookImgText } from 'components/molecules/BookImgText';
 import { SubTitle } from "components/atoms/Texts/Titles";
 import { ReturnBookBtn } from "components/atoms/Btns";
 import { useHistory } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { isLoggedInSelector } from "states/IsLoggedInState";
 
 interface BookModel{
     isbn:string,
@@ -25,11 +27,13 @@ function replaceItemAtIndex(arr:any, index:number, newValue:boolean) {
   
 export const ReturnBook = () => {
     const history = useHistory();
+    const isLoggedIn = useRecoilValue(isLoggedInSelector);
+
     React.useEffect(() => {
-        if (window.localStorage.getItem('user') === null || window.localStorage.getItem('user') ===  undefined) {
+        if (isLoggedIn === false) {
         history.goBack();
         window.alert("로그인이 필요합니다"); 
-    }}, [history])
+    }}, [history, isLoggedIn])
 
     const [books, setBooks] = React.useState<Array<Book>>([]);
     const [dataLoaded, setDataLoaded] = React.useState<boolean>(false);
@@ -101,7 +105,8 @@ export const ReturnBook = () => {
                 ...RowFlex,
                 marginLeft:'10%',
                 // Netflix Slide 넣어야 함.
-                overflowY:'scroll'
+                overflowY:'scroll',
+                minHeight: `500px`
             }}>
                 {dataLoaded ? books.map((item, index) => 
                     <ArchiveBookImgText key={index} index={index} isReturn={true} value={check[index]} onCheck={checkThisBook} item={item.book} />

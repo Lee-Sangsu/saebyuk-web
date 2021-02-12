@@ -4,9 +4,8 @@ import BookMakers from 'components/atoms/Texts/BookMakers';
 import {BookTitle} from 'components/atoms/Texts/Titles';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-export const RegisterBookImgText = ({item}:any) => {
-    const bookInfo = item.book_info;
 
+export const RegisterBookImgText = ({item}:any) => {
     return (
         <div style={{
             display:'flex',
@@ -15,7 +14,7 @@ export const RegisterBookImgText = ({item}:any) => {
             minHeight: '200px',
             alignItems: 'flex-start'
         }}>
-            <BookCover src={bookInfo.thumbnail_image} width='100px' height='132px' margin='0 0' />
+            <BookCover src={item.thumbnail_image} width='100px' height='132px' margin='0 0' />
             <div style={{
                 display:'flex',
                 flexDirection:'column',
@@ -25,8 +24,8 @@ export const RegisterBookImgText = ({item}:any) => {
                 justifyContent: 'space-around',
                 marginTop:'15px'
             }}>
-                <BookTitle width='230px' title={bookInfo.title} fontSize='14px' />
-                <BookMakers makers={`${bookInfo.authors}(지은이) ${bookInfo.translators ? ` ${bookInfo.translators}(옮긴이) `: ''}| ${bookInfo.publisher}`} fontSize='11px' /> 
+                <BookTitle width='230px' title={item.title} fontSize='14px' />
+                <BookMakers makers={`${item.authors}(지은이) ${item.translators ? ` ${item.translators}(옮긴이) `: ''}| ${item.publisher}`} fontSize='11px' /> 
             </div>
         </div>
     )
@@ -43,13 +42,15 @@ export const ArchiveBookImgText = ({index, value, isReturn, onClick, onCheck, it
     };
     
     return ( 
+        <div>
         <div className="a-book" style={{
             display:'flex',
             flexDirection:'column',
             width:'180px',
             minHeight: '200px',
             alignItems: 'flex-start',
-            padding: '20px 20px 20px 20px'
+            padding: '20px',
+            zIndex: 2
         }}>
             <BookCover onClick={onClick === "watchBook" ? watchBookInfo : onClick} className="book-cover" src={bookInfo.thumbnail_image} width='100px' height='132px' margin='0 0' />
             
@@ -58,17 +59,18 @@ export const ArchiveBookImgText = ({index, value, isReturn, onClick, onCheck, it
             <div style={{
                 display:'flex',
                 flexDirection:'column',
-                height:'50px',
+                minHeight:'70px',
                 justifyContent: 'space-around',
                 marginTop:'15px'
             }}>
-                <BookTitle width='220px' title={bookInfo.title} fontSize='14px' />
+                <BookTitle width='180px' title={bookInfo.title} fontSize='14px' />
                 <BookMakers makers={`${bookInfo.author}`} fontSize='11px' /> 
                 <span style={{
                     fontSize: '8px',
                     color:item.borrow_available ?'#FABA00': "#5CB8E1"
                 }}>{item.borrow_available ? "대출 가능" : '대출 중'}</span>
             </div>
+        </div>
         </div>
     )
 };

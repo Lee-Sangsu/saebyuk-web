@@ -14,6 +14,17 @@ export const TextInput = ({maxLength, value, onChange, placeholder, onClick}:any
     )
 };
 
+export const BottomLineTextInput = ({id, value, onChange, placeholder, onClick}:any) => {
+    return (
+        <input id={`${id}`} type="text" value={value} onClick={onClick} placeholder={`${placeholder}`} onChange={onChange} style={{
+            display:'flex',
+            height:'35px',
+            borderWidth: '0 0 2px 0',
+            zIndex: 2
+        }} /> 
+    )
+}
+
 export const TextArea = ({value, onChange, placeholder}:any) => {
     return (
         <textarea value={value} onChange={onChange} placeholder={placeholder} style={{

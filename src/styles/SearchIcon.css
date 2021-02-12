@@ -1,5 +1,7 @@
 .search-icon-div {
   cursor: pointer;
+  transition: 0.5s ease;
+  margin-top: 10px;
 }
 .circle {
   border-width: 2px;
@@ -24,4 +26,10 @@
   margin-left: 14.5px;
   border-radius: 5px;
   transform: rotate(-45deg);
+}
+
+#search-book-our-api {
+  width: 0;
+  padding: 0;
+  transition: 0.5s ease;
 }

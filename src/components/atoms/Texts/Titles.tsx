@@ -35,3 +35,12 @@ export const BookTitle = ({title, fontSize, width}:any) => {
     );
 };
 
+export const ColoredBookTitle = ({color, title}:any) => {
+    return (
+        <span style={{
+            fontSize: "18px",
+            color: color,
+            maxWidth: '90%'
+        }}>{title}</span>
+    )
+}

@@ -4,18 +4,16 @@ import { UserProfile } from 'components/atoms/Imgs/UserProfile';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RowFlex } from 'styles/FlexStyles';
+import {useRecoilValue} from 'recoil';
+import { isLoggedInSelector } from 'states/IsLoggedInState';
+import { linkStyle, liStyle } from 'styles/TextStyles';
 
 const Navigator = () => {
+    const userLoggedIn = useRecoilValue(isLoggedInSelector);
 
-    const linkStyle:object = {
-        textDecoration: 'none',
-        fontSize: '15px',
-        color: 'black'
-    };
-    
-    const liStyle:object = {
-        display:'inline-flex', 
-        margin: '0 2%'
+    const newLiStyle = {
+        ...liStyle,
+        margin: '0 5%'
     };
 
     return (
@@ -32,47 +30,42 @@ const Navigator = () => {
         }} className="nav">
             <div style={{
                 ...RowFlex,
-                justifyContent: 'space-around',
-                // width: '40%'
+                justifyContent: 'flex-start',
                 minWidth: '470px'
-                // position:'absolute'
             }}>
-                <li style={liStyle}>
+                <li style={newLiStyle}>
                     <Link style={linkStyle} to="/">
                         새벽 로고
                     </Link>
                 </li>
-                <li style={liStyle}>
+                <li style={newLiStyle}>
                     <Link style={linkStyle} to="/book/return/">
                         반납
                     </Link>
                 </li>
-                <li style={liStyle}>
-                    <Link style={linkStyle} to="/sign-up">
+                <li style={newLiStyle}>
+                    <Link style={linkStyle} to="/my-library">
                         내 서재
                     </Link>
                 </li>
-                <li style={liStyle}>
+                <li style={newLiStyle}>
                     <Link style={linkStyle} to="/book/request-or-faq">
                         신청 및 문의
                     </Link>
                 </li>
-                <li style={liStyle}>
+                <li style={{...liStyle, alignItems: 'center'}}>
                     <SearchIcon />
                 </li>
             </div>
 
             <li style={liStyle}>
-                {window.localStorage.getItem('user') === null || window.localStorage.getItem('user') === undefined ? 
-                <>
-                <SignInBtn />
-                {console.log(window.localStorage.getItem('user') )}
-                </>
-                :   
+                {userLoggedIn ? 
                 <div style={{...RowFlex, alignItems: 'center'}}>
                     <UserProfile />
                     <SignOutBtn />
                 </div>
+                :   
+                <SignInBtn />
                 }
             </li>
         </ul>

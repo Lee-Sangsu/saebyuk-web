@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import App from './route/App';
 import {RecoilRoot} from 'recoil';
+import 'styles/Font.css';
 
 declare global {
   interface Window {
@@ -9,9 +10,10 @@ declare global {
   }
 }
 
-ReactDOM.render(
+
+ReactDOM.render(  
   <React.StrictMode>
-    <RecoilRoot>
+    <RecoilRoot >
       <App />
     </RecoilRoot>
   </React.StrictMode>,

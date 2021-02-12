@@ -1,13 +1,13 @@
 import React from 'react';
-import SearchResults from 'components/molecules/SearchResult';
-import BookInfo from 'interfaces/BookInfo';
+import {KakaoSearchResults} from 'components/molecules/SearchResult';
+import { KakaoBookInfo } from 'interfaces/BookInfo';
 import axios from 'axios';
 import { SubTitle } from 'components/atoms/Texts/Titles';
 import {TextInput} from 'components/atoms/TextInputs';
 
 const SearchNewBook = () => {
     const [query, serQuery] = React.useState<string>('');
-    const [booksInfo, setBooksInfo] = React.useState<[BookInfo]|undefined>();
+    const [booksInfo, setBooksInfo] = React.useState<[KakaoBookInfo]|undefined>();
     
     const searchBook = React.useCallback(() => {
         let id = 1;
@@ -15,7 +15,7 @@ const SearchNewBook = () => {
             const uniqueKey = id++;
             return uniqueKey;
         };
-        const kakaoAuthKey = '23deffe47c27fae086a47cca4a65a532';
+        const kakaoAuthKey = `${process.env.REACT_APP_KAKAO_REST_KEY}`;
         // `${process.env.REACT_APP_KAKAO_REST_KEY}`;
         
         axios.get('https://dapi.kakao.com/v3/search/book?target=title', {
@@ -33,7 +33,7 @@ const SearchNewBook = () => {
             // setBooksInfo([emp/]); // must make empty the state.
             const booksInformation = res.data.documents;
             
-            var emptyArray:BookInfo[] = [];
+            var emptyArray:KakaoBookInfo[] = [];
             booksInformation.forEach((data:any) => {
                 var year = data.datetime.slice(0,4);
                 var month = data.datetime.slice(6,7);
@@ -66,7 +66,7 @@ const SearchNewBook = () => {
                         translators += `${data.translators[0]}`;
                     }
                 }                
-                const bookObj:BookInfo = {
+                const bookObj:KakaoBookInfo = {
                     id: getId() ,
                     isbn: isbn[0],
                     title : data.title,
@@ -82,7 +82,7 @@ const SearchNewBook = () => {
                 //contents, authors, datetime, isbn, price, publisher, thumbnail, title, url, translators from api
             });
             if (emptyArray) {
-                setBooksInfo(emptyArray as [BookInfo]);
+                setBooksInfo(emptyArray as [KakaoBookInfo]);
             }
         })
         .catch(():void => {
@@ -137,7 +137,7 @@ const SearchNewBook = () => {
                     <h4 style={{marginLeft:'30px'}}>검색 결과가 없습니다.</h4>
                 </div>
                 :
-                booksInfo.map((data) => <SearchResults key={data.id} data={data} />)
+                booksInfo.map((data) => <KakaoSearchResults key={data.id} data={data} />)
                 }
             </div>
         </div>

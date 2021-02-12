@@ -6,7 +6,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { TextInput } from "components/atoms/TextInputs";
 import { SignUpBtn } from "components/atoms/Btns";
-import {  ColumnFlex, RowFlex } from "styles/FlexStyles";
+import {  ColumnFlex } from "styles/FlexStyles";
 import { AlertTitle } from "components/atoms/Texts/Titles";
 
 const SignUp = () => {
@@ -46,6 +46,7 @@ const SignUp = () => {
         .then((res) => {
             console.log(res);
             window.localStorage.setItem('user', gSchoolNickname);
+            window.location.reload();
             history.push('/')
         })
         .catch((err) => console.log(err))
@@ -61,7 +62,7 @@ const SignUp = () => {
             paddingTop: '60px'
         }}>
             <AlertTitle text="회원가입" />
-            <div style={{...RowFlex, alignItems:'center', paddingTop: '130px'}}>
+            <div style={{...ColumnFlex, alignItems:'center', paddingTop: '80px'}}>
                 <TextInput value={gSchoolNickname} onChange={(e:any) => setNickname(e.target.value)} maxLength={2} placeholder="거꾸로캠퍼스에서 사용하는 별명을 입력해주세요." />
                 <SignUpBtn isWritten={isWritten} signUp={signUp} />
             </div>

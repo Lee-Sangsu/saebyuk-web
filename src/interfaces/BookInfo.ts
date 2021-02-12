@@ -1,4 +1,4 @@
-export default interface BookInfo {
+export declare interface KakaoBookInfo {
     id: number;
     isbn: string;
     title: string;
@@ -10,3 +10,31 @@ export default interface BookInfo {
     description: string;
 };
 
+export declare interface DjangoBook {
+    borrowed_at: Date;
+    is_overdue: boolean;
+    book :DjangoBookObj;
+    returned_at: Date | null;
+}
+
+export declare interface DjangoBookObj {
+    isbn: number;
+    book_info: DjangoBookInfo;
+    registered_date: string;
+    borrow_available: boolean;
+}
+
+export declare interface DjangoBookInfo {
+    id: number;
+    title: string;
+    author: string;
+    thumbnail_image:string;
+    publisher: string;
+    page:number;
+    published_date: string;
+    genre: Array<string>
+    keyword: Array<string>;
+    subtitle: string;
+    description: string;
+    purchase_link: string;
+}
