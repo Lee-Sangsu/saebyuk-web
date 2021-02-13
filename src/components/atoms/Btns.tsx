@@ -9,12 +9,14 @@ import InitializeState from 'states/InitializeState';
 
 export const NextorBackBtn = ({isEmpty, text, to}:any) => {
     return (
-        <Link to={to} style={{
+        <>
+        {isEmpty ? 
+        <span style={{
             width:'70px',
             height:'40px',
             backgroundColor:'black',
-            opacity: isEmpty ? '0.5' : '1',
-            cursor: isEmpty ? 'not-allowed' : 'pointer',
+            opacity: '0.5' ,
+            cursor: 'not-allowed',
             color:'white',
             display:'flex',
             justifyContent:'center',
@@ -23,18 +25,39 @@ export const NextorBackBtn = ({isEmpty, text, to}:any) => {
             textDecoration:'none',
             borderRadius:'7px',
             boxShadow: '3px 2.5px 2px #CBCBCB'
-        }}>{text}</Link>
+        }}>{text}</span>
+        : 
+        <Link to={to} style={{
+            width:'70px',
+            height:'40px',
+            backgroundColor:'black',
+            opacity: '1',
+            cursor: 'pointer',
+            color:'white',
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            margin: '0 20px',
+            textDecoration:'none',
+            borderRadius:'7px',
+            boxShadow: '3px 2.5px 2px #CBCBCB'
+        }}>{text}</Link>}        
+        </>
     );
 };
 
 
 export const RegisterNewBookBtn = ({newBook}:any) => {
     const history = useHistory();
-    console.log(newBook);
+    // console.log(newBook.genre);
     const genres = ["환경", "디자인", "마케팅", "페미니즘", "기타"];
     const keywords = ['유익한', '감동적인', '영감을 주는'];
 
     const onClick = () => {
+        if (!newBook.title || !newBook.page || !newBook.subtitle) {
+            window.alert("입력 정보가 부족합니다.");
+            return ;
+        }
         var newBookGenre = [];
         var newBookKeywords = [];
         // newBook
@@ -45,7 +68,7 @@ export const RegisterNewBookBtn = ({newBook}:any) => {
         }
         for (var x=0; x < keywords.length; x++){
             if(newBook.keyword[x] === true) {
-                newBookKeywords.push(genres[x]);
+                newBookKeywords.push(keywords[x]);
             }
         }
         
@@ -73,8 +96,8 @@ export const RegisterNewBookBtn = ({newBook}:any) => {
             }
         })
         .then((res) => {
-            console.log(res);
-            window.alert("등록되었노라");
+            // console.log(res);
+            window.alert("책이 성공적으로 등록되었습니다!");
             history.push('/');
 
             //aler를 주자.
@@ -83,7 +106,7 @@ export const RegisterNewBookBtn = ({newBook}:any) => {
             if(err.response.status === 400) {
                 window.alert("해당 isbn을 가진 책이 이미 등록되어 있습니다.")
             }
-            console.log(err);
+            // console.log(err);
         })    
     };
 
@@ -145,7 +168,7 @@ export const SignInBtn = () =>{
     window.Kakao.Auth.login({
       scope: 'profile',
       success: (res:any) => {
-        console.log('first res:', res)
+        // console.log('first res:', res)
         window.Kakao.Auth.setAccessToken(res.access_token);
   
         const csrftoken = Cookies.get('csrftoken');
@@ -163,19 +186,19 @@ export const SignInBtn = () =>{
         .then((res) => {
           // setStatus(res.status);
           if (res.status === 203) {
-            console.log(res.data);
+            // console.log(res.data);
             setProfile(res.data); 
             history.push("/sign-up");
             setInit(true);
           } else if (res.status === 200) {
-            console.log(res.data);
+            // console.log(res.data);
             window.localStorage.setItem('user', res.data.user.g_school_nickname);
             window.localStorage.setItem('profile_img', res.data.user.profile_image);
             window.location.reload();
             window.alert("login completed");
           }
         })
-        .catch((err) => console.log(err))
+        // .catch((err) => console.log(err))
       }, 
       fail: (err:any) => {
         console.error(err);

@@ -57,3 +57,42 @@
   height: 26px;
   margin: 0;
 }
+
+/* Heart Icon */
+
+.heart-shape {
+  position: absolute;
+  z-index: 3;
+  width: 18px;
+  content: "❤";
+  height: 18px;
+  margin-top: 10px;
+  margin-left: 10px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: white;
+}
+.heart-shape::after,
+.heart-shape::before {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  content: "";
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.heart-shape::after {
+  bottom: 0px;
+  left: -8px;
+}
+.heart-shape::before {
+  top: -8px;
+  right: 0px;
+}

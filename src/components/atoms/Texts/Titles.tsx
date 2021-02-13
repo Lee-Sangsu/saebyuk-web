@@ -21,7 +21,7 @@ export const AlertTitle = ({text}:any) => {
     )
 };
 
-export const BookTitle = ({title, fontSize, width}:any) => {
+export const BookTitle = ({title, fontSize, minWidth, width}:any) => {
     return (
         <span style={{
             fontWeight: 'bold',
@@ -30,6 +30,7 @@ export const BookTitle = ({title, fontSize, width}:any) => {
             margin:'0',
             display:'flex',
             width:width,
+            minWidth: minWidth,
             flexWrap:'wrap'
         }}>{title}</span>
     );

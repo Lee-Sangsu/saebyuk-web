@@ -10,13 +10,12 @@ const SearchNewBook = () => {
     const [booksInfo, setBooksInfo] = React.useState<[KakaoBookInfo]|undefined>();
     
     const searchBook = React.useCallback(() => {
-        let id = 1;
+        var id = 1;
         function getId() {
             const uniqueKey = id++;
             return uniqueKey;
         };
         const kakaoAuthKey = `${process.env.REACT_APP_KAKAO_REST_KEY}`;
-        // `${process.env.REACT_APP_KAKAO_REST_KEY}`;
         
         axios.get('https://dapi.kakao.com/v3/search/book?target=title', {
             // 카카오가 별로기 때문에 -> 네이버 api: https://openapi.naver.com/v1/search/book.json
@@ -30,10 +29,10 @@ const SearchNewBook = () => {
             } 
         })
         .then((res:any) => {
-            // setBooksInfo([emp/]); // must make empty the state.
             const booksInformation = res.data.documents;
-            
+
             var emptyArray:KakaoBookInfo[] = [];
+
             booksInformation.forEach((data:any) => {
                 var year = data.datetime.slice(0,4);
                 var month = data.datetime.slice(6,7);
@@ -76,10 +75,8 @@ const SearchNewBook = () => {
                     published_date: `${year}년 ${month}월`,
                     thumbnail_image: data.thumbnail,
                     description: data.contents
-                };
-                
+                };                
                 emptyArray.push(bookObj);
-                //contents, authors, datetime, isbn, price, publisher, thumbnail, title, url, translators from api
             });
             if (emptyArray) {
                 setBooksInfo(emptyArray as [KakaoBookInfo]);
@@ -117,12 +114,12 @@ const SearchNewBook = () => {
             <SubTitle fontSize="15px" margin='10px 0' text="도서 검색" />
 
             <TextInput value={query} onClick={() => {
-                document.getElementById("search-res-container")!.style.display = 'flex';
+                document.getElementById("kakao-search-res-container")!.style.display = 'flex';
             }} placeholder='도서명 또는 저자 입력' onChange={(e:any) => serQuery(e.target.value)} />
 
             <SubTitle fontSize="15px" margin='20px 0px 5px 0px' text="도서 목록" />
 
-            <div id="search-res-container" style={{
+            <div id="kakao-search-res-container" style={{
                 display:'none',
                 flexDirection:'column',
                 width:'300px',

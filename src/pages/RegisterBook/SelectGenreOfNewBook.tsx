@@ -16,8 +16,8 @@ const SelectGenreOfNewBook = () => {
 
     React.useEffect(() => {
         setEmpty(true);
-    }, [setEmpty]);
-    
+        //eslint-disable-next-line
+    }, []);
 
     const onKeywordClick = (event:any) => {
         const genre:string = event.target.value;

@@ -24,9 +24,9 @@ const SignUp = () => {
     }, [gSchoolNickname, setWritten])
     
     const signUp = () => {
-        console.log(profile);
+        // console.log(profile);
         const kakao_profile_info = profile.kakao_profile;
-        console.log(kakao_profile_info);
+        // console.log(kakao_profile_info);
         const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/account/sign-up/kakao/`, {
           headers:{
@@ -44,7 +44,7 @@ const SignUp = () => {
           }
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             window.localStorage.setItem('user', gSchoolNickname);
             window.location.reload();
             history.push('/')

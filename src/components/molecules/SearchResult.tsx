@@ -7,7 +7,6 @@ import BookMakers from 'components/atoms/Texts/BookMakers';
 import { DjangoBookInfo, DjangoBookObj } from 'interfaces/BookInfo';
 
 export const KakaoSearchResults = ({data}:any) => {
-    console.log(data);
     data = JSON.parse(JSON.stringify(data));
     
     var publishedDate:string = data.published_date;

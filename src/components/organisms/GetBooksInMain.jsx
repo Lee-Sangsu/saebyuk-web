@@ -6,7 +6,6 @@ import 'styles/Hovers.css';
 import { SubTitle } from 'components/atoms/Texts/Titles';
 import Slider from 'react-slick';
 import { GenreBox } from 'components/atoms/Boxes/KeywordBox';
-// import 'styles/ReactSlick.css';
 
 const GetBooksInMain = () => {
     const [books, setBooks] = React.useState([]);
@@ -23,14 +22,12 @@ const GetBooksInMain = () => {
     };
 
     const getBooks = React.useCallback(() => {
-        // newBook
         axios.get(`${process.env.REACT_APP_BASE_URL}/book/main/`)
         .then((res) => {
             var emptyArray = [];
             res.data.forEach( (item) => {
                 emptyArray.push(item);
             })
-            console.log(emptyArray)
             setBooks(emptyArray);
             setDataLoaded(true);
         })
@@ -48,7 +45,6 @@ const GetBooksInMain = () => {
                 res.data.forEach( (item) => {
                     emptyArray.push(item);
                 })
-                console.log(emptyArray);
                 setBooks(emptyArray);
                 setDataLoaded(true);
             })
@@ -63,7 +59,7 @@ const GetBooksInMain = () => {
         }}>
             <div style={{
                 ...RowFlex,
-                margin: "25px 0 10px 10%"
+                margin: "25px 0 20px 10%"
             }}>
                 {genres.map((value, index) =>
                     <GenreBox key={index} filter={filter} setFilter={setFilter} id={`keyword-box${index}`} keyword={value} />
@@ -74,7 +70,7 @@ const GetBooksInMain = () => {
             {dataLoaded ?
                 <Slider {...settings}>
                     {books.map((item, index) =>
-                        <ArchiveBookImgText key={index} onClick="watchBook" item={item} />
+                        <ArchiveBookImgText key={index} onClick="watchBook" isMain={true} item={item} />
                     )}
                 </Slider>
             : <span>책 정보 불러오는 중 ...</span>}

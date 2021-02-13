@@ -30,7 +30,7 @@ const FAQ = () => {
                         body: `${faqContent}`
                     }
                 }).then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     setPending(false);
                     window.alert("문의 내역이 성공적으로 등록되었습니다.");
                 }).catch((e) => console.error(e))

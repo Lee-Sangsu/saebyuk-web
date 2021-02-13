@@ -9,6 +9,7 @@ import { grayText } from "styles/TextStyles";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useHistory } from "react-router-dom";
+import { LoveCheckBox } from "components/atoms/Boxes/LoveCheckBox";
 
 export const BookMainInfoOrg = ({item}:any) => {
     // console.log(item);
@@ -38,6 +39,7 @@ export const BookMainInfoOrg = ({item}:any) => {
         })
         .catch((err) => console.log(err))
     };
+    // console.log(item)
 
     return (
         <div style={{
@@ -59,7 +61,7 @@ export const BookMainInfoOrg = ({item}:any) => {
                     justifyContent: 'space-around',
                     paddingLeft: '10px'
                 }}>
-                    <BookTitle title={`${bookInfo.title}`} fontSize="30px" width="60%" />
+                    <BookTitle title={`${bookInfo.title}`} fontSize="30px" minWidth="60%" />
                     <BookMakers fontWeight="500" makers={`저자 | ${bookInfo.author}`} fontSize="14px" />
                     <BookMakers fontWeight="500" makers={`출판사 | ${bookInfo.publisher}`} fontSize="14px" />
                     <BookMakers fontWeight="500" makers={`출간일 | ${bookInfo.published_date}`} fontSize="14px" />
@@ -82,7 +84,11 @@ export const BookMainInfoOrg = ({item}:any) => {
                             )}
                         </div>
                     </div>
-                    <BorrowBookBtn borrowAvailable={item.borrow_available} onClick={borrowThisBook} />
+                    
+                    <div style={{...ColumnFlex, alignItems:'flex-end'}}>
+                        <LoveCheckBox isbn={item.isbn} />
+                        <BorrowBookBtn borrowAvailable={item.borrow_available} onClick={borrowThisBook} />
+                    </div>
                 </div>
             </div>
 

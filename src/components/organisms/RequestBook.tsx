@@ -32,7 +32,7 @@ const RequestBook = () => {
                         others: etcInfo
                     }
                 }).then((res) => {
-                    console.log("성공적으로 신청되었습니다.");
+                    window.alert("성공적으로 신청되었습니다.");
                 }).catch((e) => console.error(e))
             } else {
                 window.alert("도서명과 저자를 입력해주세요.");

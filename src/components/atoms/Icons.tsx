@@ -31,32 +31,24 @@ export const SearchIcon = () => {
     }, [query, searchBook]);
 
     function onBlurSearching() {
-        if (query) {
+        if (searchBarOpened && query) {
             // open search result container book 
-
-            console.log(query.length)
+            // console.log("here 1")
+            // console.log(query.length)
             return ;
+        } else if (searchBarOpened === false) {
+            document.getElementById('search-book-our-api')!.style.width = '290px';
+            document.getElementById('search-book-our-api')!.style.paddingLeft = '10px';
+            setSearchBarOpened(true);
+            document.getElementById('search-container')!.style.width = '330px';
+            document.getElementById('search-container')!.style.flexWrap = 'wrap';
         } else {
+            // console.log("here 2")
             document.getElementById('search-container')!.style.width = '22px';
             document.getElementById('search-container')!.style.flexWrap = 'no-wrap';
             document.getElementById('search-book-our-api')!.style.width = '0';
             document.getElementById('search-book-our-api')!.style.padding = '0';
             setSearchBarOpened(false);
-        }
-    }
-
-    function searchingProcess() {
-        if (searchBarOpened && query) {
-            return ;
-        } else {
-            // search bar open
-            document.getElementById('search-book-our-api')!.style.width = '290px';
-            document.getElementById('search-book-our-api')!.style.paddingLeft = '10px';
-            setSearchBarOpened(true);
-            // setTimeout(() => {
-                document.getElementById('search-container')!.style.width = '330px';
-                document.getElementById('search-container')!.style.flexWrap = 'wrap';
-            // }, 500)
         }
     }
 
@@ -70,10 +62,10 @@ export const SearchIcon = () => {
 
     return (
         <div id="search-container" style={{
-            ...RowFlex, justifyContent: 'flex-end', position: 'absolute', alignItems: 'flex-start', transition: '0.5s ease', overflowY:"revert", height: '40px'
+            ...RowFlex, justifyContent: 'flex-end', position: 'absolute', alignItems: 'flex-start', transition: '0.5s ease', overflowY:"revert", height: '40px', zIndex:3
         }}>
             <BottomLineTextInput id="search-book-our-api" value={query} onChange={(e:any) => setQuery(e.target.value)} placeholder="검색어를 입력하세요" />
-            <div onClick={searchingProcess} onMouseDown={onBlurSearching} className="search-icon-div" style={{
+            <div  onMouseDown={onBlurSearching} className="search-icon-div" style={{
                 ...RowFlex,
                 width: '22px',
                 height: '22px'
@@ -107,4 +99,4 @@ export const SearchIcon = () => {
             </div>
         </div>
     );
-}
+};

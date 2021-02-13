@@ -10,6 +10,13 @@ export declare interface KakaoBookInfo {
     description: string;
 };
 
+export declare interface LovedBook {
+    id: number;
+    book: DjangoBookObj;
+    loved: Boolean;
+    user: number;
+}
+
 export declare interface DjangoBook {
     borrowed_at: Date;
     is_overdue: boolean;
