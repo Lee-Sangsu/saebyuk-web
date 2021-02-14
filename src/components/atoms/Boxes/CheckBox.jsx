@@ -1,6 +1,6 @@
 import 'styles/CheckBox.css';
 
-export const CircleCheckBox = ({onCheck, index, value}: any) => {
+export const CircleCheckBox = ({onCheck, index, value}) => {
     return (
         <section style={{
             position:'absolute',
