@@ -6,7 +6,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const FAQ = () => {
-    const userNickName = window.localStorage.getItem('user');
+    const userNickName = window.sessionStorage.getItem('user');
 
     const [faqTitle, setFAQTitle] = React.useState<string>('');
     const [faqContent, setFAQContent] = React.useState<string>('');
@@ -71,7 +71,7 @@ const FAQ = () => {
                 alignItems: 'center'
             }}>
                 <h1>문의하기</h1>
-                <h3>{`${window.localStorage.getItem('user')}님, 무엇을 도와드릴까요? ☺️`}</h3>
+                <h3>{`${window.sessionStorage.getItem('user')}님, 무엇을 도와드릴까요? ☺️`}</h3>
             </div>
 
             <SubTitle margin='10px 0' text="문의 주제*" />

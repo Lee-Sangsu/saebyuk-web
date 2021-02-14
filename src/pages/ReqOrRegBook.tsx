@@ -16,7 +16,7 @@ const ReqOrRegBook = () => {
         window.alert("로그인이 필요합니다"); 
     }}, [history, isLoggedIn])
 
-    const userNickName = window.localStorage.getItem('user');
+    const userNickName = window.sessionStorage.getItem('user');
 
     return (
         <div style= {{

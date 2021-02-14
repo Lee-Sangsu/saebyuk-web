@@ -1,5 +1,5 @@
 export const UserProfile = () => {
-    const profileImg:any = window.localStorage.getItem("profile_img");
+    const profileImg:any = window.sessionStorage.getItem("profile_img");
     const profileImgStyle: object = {  
         objectFit: 'cover',
         marginRight: '20px',

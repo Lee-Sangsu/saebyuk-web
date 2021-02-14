@@ -20,7 +20,7 @@ const InputKeywords = () => {
 
     React.useEffect(() => {
         setEmpty(true);
-    }, [setEmpty]);
+    }, []);
 
     // console.log(item);
     return (
@@ -43,13 +43,13 @@ const InputKeywords = () => {
                 <NewBookKeywords setEmpty={setEmpty} keywords={keywords} keywordChecked={keywordChecked} />
             </div>
             <RegisterNavigator toPrev={{ 
-                pathname: `/book/register/item?id=${item.id}`, 
+                pathname: `/saebyuk-web/book/register/item?id=${item.id}`, 
                 state : {
                     item:{
                         ...item
                     }
                 }
-            }} toNext={{ pathname:`/book/register/etc-infos/`, state:{
+            }} toNext={{ pathname:`/saebyuk-web/book/register/etc-infos/`, state:{
                 item: {
                     ...item,
                     keyword: keywordChecked

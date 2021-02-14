@@ -34,7 +34,7 @@ export const LoveCheckBox = ({isbn}) => {
                         'Content-Type': 'application/json'
                     },
                     data: {
-                        g_school_nickname: window.localStorage.getItem("user"),
+                        g_school_nickname: window.sessionStorage.getItem("user"),
                         isbn: isbn
                     }
                 }).then(() => {

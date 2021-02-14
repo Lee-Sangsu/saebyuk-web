@@ -2,7 +2,7 @@ import {atom, selector} from 'recoil';
 
 export const IsLoggedInState = atom({
     key: 'isLoggedInState',
-    default: window.localStorage.getItem('user')
+    default: window.sessionStorage.getItem('user')
 });
 
 

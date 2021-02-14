@@ -98,7 +98,7 @@ export const RegisterNewBookBtn = ({newBook}:any) => {
         .then((res) => {
             // console.log(res);
             window.alert("책이 성공적으로 등록되었습니다!");
-            history.push('/');
+            history.push('/saebyuk-web/');
 
             //aler를 주자.
         })
@@ -192,8 +192,8 @@ export const SignInBtn = () =>{
             setInit(true);
           } else if (res.status === 200) {
             // console.log(res.data);
-            window.localStorage.setItem('user', res.data.user.g_school_nickname);
-            window.localStorage.setItem('profile_img', res.data.user.profile_image);
+            window.sessionStorage.setItem('user', res.data.user.g_school_nickname);
+            window.sessionStorage.setItem('profile_img', res.data.user.profile_image);
             window.location.reload();
             window.alert("login completed");
           }
@@ -217,16 +217,17 @@ export const SignOutBtn = () => {
     const onSignOutClick = () => {
         if (window.Kakao.Auth.getAccessToken()) {
             window.Kakao.Auth.logout(function() {
-                window.localStorage.removeItem('user');
+                sessionStorage.clear();
+                history.push('/saebyuk-web/');
+                window.alert("Logout Complete");
+                window.location.reload();
             });
         } else {
-            window.localStorage.removeItem('user');
-        }
-        setTimeout(() => {
+            sessionStorage.clear();
             history.push('/saebyuk-web/');
             window.alert("Logout Complete");
             window.location.reload();
-        }, 400)
+        }
     };
     return (
         <button style={loginBtnStyle} onClick={onSignOutClick}>로그아웃</button>

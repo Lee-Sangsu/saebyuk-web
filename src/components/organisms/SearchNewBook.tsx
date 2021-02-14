@@ -108,7 +108,7 @@ const SearchNewBook = () => {
                 alignItems: 'center'
             }}>
                 <h1>등록하기</h1>
-                <h3>{`${window.localStorage.getItem('user')}님, 새로운 책을 등록할 수 있어요 ☺️`}</h3>
+                <h3>{`${window.sessionStorage.getItem('user')}님, 새로운 책을 등록할 수 있어요 ☺️`}</h3>
             </div>
 
             <SubTitle fontSize="15px" margin='10px 0' text="도서 검색" />

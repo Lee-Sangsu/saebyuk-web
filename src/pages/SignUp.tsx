@@ -44,9 +44,9 @@ const SignUp = () => {
         })
         .then((res) => {
             // console.log(res);
-            window.localStorage.setItem('user', gSchoolNickname);
+            window.sessionStorage.setItem('user', gSchoolNickname);
             window.location.reload();
-            history.push('/')
+            history.push('/saebyuk-web/')
         })
         .catch((err) => console.log(err))
     };

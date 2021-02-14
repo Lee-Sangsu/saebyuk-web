@@ -76,7 +76,7 @@ export const MustTypedInfos = () => {
             </div>
 
             <RegisterNavigator toPrev={{ 
-                pathname: `/book/register/keyword/`, 
+                pathname: `/saebyuk-web/book/register/keyword/`, 
                 state : {
                     item:{
                         ...item

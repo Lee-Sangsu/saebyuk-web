@@ -36,7 +36,7 @@ export const ArchiveBookImgText = ({index, value, isReturn, onClick, onCheck, it
     const bookInfo = item.book_info;
 
     const watchBookInfo = () => {
-        history.push(`/book/info/item?title=${bookInfo.title}`, {
+        history.push(`/saebyuk-web/book/info/item?title=${bookInfo.title}`, {
             item
         });
     };

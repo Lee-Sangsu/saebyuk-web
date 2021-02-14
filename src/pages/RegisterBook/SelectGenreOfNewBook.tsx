@@ -72,7 +72,7 @@ const SelectGenreOfNewBook = () => {
                     )}
                 </div>
             </div>
-            <RegisterNavigator toPrev="/book/request-or-faq" isRegister={false} item={item} genreChecked={genreChecked} toNext={{ pathname:`/book/register/keyword/`, state:{
+            <RegisterNavigator toPrev="/saebyuk-web/book/request-or-faq" isRegister={false} item={item} genreChecked={genreChecked} toNext={{ pathname:`/saebyuk-web/book/register/keyword/`, state:{
                 item: {
                     ...item,
                     genre: genreChecked

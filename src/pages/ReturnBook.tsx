@@ -43,10 +43,10 @@ export const ReturnBook = () => {
 
     const getBooks = React.useCallback(() => {
         // newBook
-        if (window.localStorage.getItem('user') === null) {
+        if (window.sessionStorage.getItem('user') === null) {
             return ;
         } else {
-            axios.get(`${process.env.REACT_APP_BASE_URL}/book/borrowed/${window.localStorage.getItem('user')}/`)
+            axios.get(`${process.env.REACT_APP_BASE_URL}/book/borrowed/${window.sessionStorage.getItem('user')}/`)
             .then((res:any) => {
                 console.log(res);
                 // console.log(Array.isArray(res.data));
@@ -89,11 +89,11 @@ export const ReturnBook = () => {
         axios.put(`${process.env.REACT_APP_BASE_URL}/book/return/`, {
             data:{
                 isbn: isbnArray,
-                g_school_nickname: window.localStorage.getItem('user')
+                g_school_nickname: window.sessionStorage.getItem('user')
             }
         }).then((res) => {
             window.alert(`성공적으로 반납되었습니다.`);
-            history.push('/');
+            history.push('/saebyuk-web/');
         }).catch(e => console.error(e))
     }
 

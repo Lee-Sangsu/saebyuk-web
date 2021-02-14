@@ -25,7 +25,7 @@ export const BookMainInfoOrg = ({item}:any) => {
                 // 'X-CSRFToken': csrftoken
             },
             data: {
-                g_school_nickname: window.localStorage.getItem("user"),
+                g_school_nickname: window.sessionStorage.getItem("user"),
                 isbn: item.isbn
             }
         })
@@ -35,7 +35,7 @@ export const BookMainInfoOrg = ({item}:any) => {
             window.alert(`대출 기한은 일주일입니다. ${currentDate.getMonth()+1}월 ${currentDate.getDate()}일 까지 
 도서관 새벽으로
 반납해주시기 바랍니다.`)
-            history.push('/');
+            history.push('/saebyuk-web/');
         })
         .catch((err) => console.log(err))
     };

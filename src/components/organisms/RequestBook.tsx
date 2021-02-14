@@ -6,7 +6,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const RequestBook = () => {
-    const userNickName = window.localStorage.getItem('user');
+    const userNickName = window.sessionStorage.getItem('user');
 
     const [bookTitle, setBookTitle] = React.useState<string>('');
     const [bookAuthor, setBookAuthor] = React.useState<string>('');
