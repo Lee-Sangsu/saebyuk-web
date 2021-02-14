@@ -72,13 +72,13 @@ export const RegisterNewBookBtn = ({newBook}:any) => {
             }
         }
         
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/book/register/new/`, {
             headers:{
                 "Access-Control-Allow-Origin": '*',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                // 'X-CSRFToken': csrftoken
             },
             data: {
                 isbn: newBook.isbn, 
@@ -163,21 +163,21 @@ export const SignInBtn = () =>{
   const setInit = useSetRecoilState(InitializeState);
 
   const signInProcess = () => {
-    axios.defaults.xsrfCookieName = "csrftoken"
-    axios.defaults.xsrfHeaderName = "X-CSRFToken"
+    // axios.defaults.xsrfCookieName = "csrftoken"
+    // axios.defaults.xsrfHeaderName = "X-CSRFToken"
     window.Kakao.Auth.login({
       scope: 'profile',
       success: (res:any) => {
         // console.log('first res:', res)
         window.Kakao.Auth.setAccessToken(res.access_token);
   
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/account/login/kakao/`, {
           headers:{
               "Access-Control-Allow-Origin": '*',
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'X-CSRFToken': csrftoken
+            //   'X-CSRFToken': csrftoken
           },
           data: {
             access_token: res.access_token
@@ -223,9 +223,9 @@ export const SignOutBtn = () => {
             window.localStorage.removeItem('user');
         }
         setTimeout(() => {
-            window.location.reload();
-            history.push('/');
+            history.push('/saebyuk-web/');
             window.alert("Logout Complete");
+            window.location.reload();
         }, 400)
     };
     return (

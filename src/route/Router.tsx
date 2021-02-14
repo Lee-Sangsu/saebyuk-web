@@ -16,31 +16,31 @@ const AppRouter = () => {
         <BrowserRouter>
             <Navigator />
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/saebyuk-web">
                     <Main />
                 </Route>
-                <Route exact path="/sign-up">
+                <Route exact path="/saebyuk-web/sign-up">
                     <SignUp />
                 </Route>
-                <Route exact path="/my-library">
+                <Route exact path="/saebyuk-web/my-library">
                     <MyLibrary />
                 </Route>
-                <Route exact path="/book/info/:item?">
+                <Route exact path="/saebyuk-web/book/info/:item?">
                     <BookInfo />
                 </Route>
-                <Route exact path="/book/request-or-faq">
+                <Route exact path="/saebyuk-web/book/request-or-faq">
                     <ReqOrRegBook />
                 </Route>
-                <Route exact path="/book/return">
+                <Route exact path="/saebyuk-web/book/return">
                     <ReturnBook />
                 </Route>
-                <Route exact path="/book/register/keyword/">
+                <Route exact path="/saebyuk-web/book/register/keyword/">
                     <InputKeywords />
                 </Route>
-                <Route exact path="/book/register/etc-infos/">
+                <Route exact path="/saebyuk-web/book/register/etc-infos/">
                     <MustTypedInfos />
                 </Route>
-                <Route exact path="/book/register/:item?">
+                <Route exact path="/saebyuk-web/book/register/:item?">
                     <SelectGenreOfNewBook />
                 </Route>
                 

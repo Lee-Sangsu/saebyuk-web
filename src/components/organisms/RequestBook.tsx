@@ -14,7 +14,7 @@ const RequestBook = () => {
     const [etcInfo, setEtcInfo] = React.useState<string>('');
 
     const requestBook = () => {
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         if(userNickName){
             if (bookTitle && bookAuthor) {
                 axios.post(`${process.env.REACT_APP_BASE_URL}/book/request/`, {
@@ -22,7 +22,7 @@ const RequestBook = () => {
                         "Access-Control-Allow-Origin": '*',
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': csrftoken
+                        // 'X-CSRFToken': csrftoken
                     },
                     data: {
                         g_school_nickname: userNickName,

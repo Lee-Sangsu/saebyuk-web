@@ -14,7 +14,7 @@ const FAQ = () => {
 
 
     const faq = () => {
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         if(userNickName){
             if (faqTitle && faqContent) {
                 setPending(true);
@@ -23,7 +23,7 @@ const FAQ = () => {
                         "Access-Control-Allow-Origin": '*',
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': csrftoken
+                        // 'X-CSRFToken': csrftoken
                     },
                     data: {
                         title: `${faqTitle}`,

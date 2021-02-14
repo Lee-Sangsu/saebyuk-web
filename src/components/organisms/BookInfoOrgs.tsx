@@ -16,13 +16,13 @@ export const BookMainInfoOrg = ({item}:any) => {
     const history = useHistory();
     const bookInfo = item.book_info;
     const borrowThisBook = () => {
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/book/borrow/${item.isbn}/`, {
             headers:{
                 "Access-Control-Allow-Origin": '*',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                // 'X-CSRFToken': csrftoken
             },
             data: {
                 g_school_nickname: window.localStorage.getItem("user"),

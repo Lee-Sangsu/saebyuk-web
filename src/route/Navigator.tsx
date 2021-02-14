@@ -34,22 +34,22 @@ const Navigator = () => {
                 minWidth: '470px'
             }}>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/">
+                    <Link style={linkStyle} to="/saebyuk-web/">
                         새벽 로고
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/book/return/">
+                    <Link style={linkStyle} to="/saebyuk-web/book/return/">
                         반납
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/my-library">
+                    <Link style={linkStyle} to="/saebyuk-web/my-library">
                         내 서재
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/book/request-or-faq">
+                    <Link style={linkStyle} to="/saebyuk-web/book/request-or-faq">
                         신청 및 문의
                     </Link>
                 </li>

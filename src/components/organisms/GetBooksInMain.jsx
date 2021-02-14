@@ -6,7 +6,7 @@ import 'styles/Hovers.css';
 import { SubTitle } from 'components/atoms/Texts/Titles';
 import Slider from 'react-slick';
 import { GenreBox } from 'components/atoms/Boxes/KeywordBox';
-import Cookies from 'js-cookie';
+
 
 const GetBooksInMain = () => {
     const [books, setBooks] = React.useState([]);
@@ -23,14 +23,13 @@ const GetBooksInMain = () => {
     };
 
     const getBooks = React.useCallback(() => { 
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         axios.get(`${process.env.REACT_APP_BASE_URL}/book/main/`, {
-             headers:{
-                "Access-Control-Allow-Origin": '*',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
-            },
+            //  headers:{
+            //     "Access-Control-Allow-Origin": '*',
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json'
+            // },
         })
         .then((res) => {
             var emptyArray = [];

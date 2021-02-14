@@ -27,13 +27,12 @@ const SignUp = () => {
         // console.log(profile);
         const kakao_profile_info = profile.kakao_profile;
         // console.log(kakao_profile_info);
-        const csrftoken = Cookies.get('csrftoken');
+        // const csrftoken = Cookies.get('csrftoken');
         axios.post(`${process.env.REACT_APP_BASE_URL}/account/sign-up/kakao/`, {
           headers:{
               "Access-Control-Allow-Origin": '*',
               'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'X-CSRFToken': csrftoken
+              'Content-Type': 'application/json'
           },
           data: {
             kakao_id: profile.kakao_id,

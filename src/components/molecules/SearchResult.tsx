@@ -19,7 +19,7 @@ export const KakaoSearchResults = ({data}:any) => {
         return <></>;
     }
     return (
-        <Link to={{ pathname:`/book/register/item?id=${data.id}`, state:{
+        <Link to={{ pathname:`/saebyuk-web/book/register/item?id=${data.id}`, state:{
             item: data
         }}} id="search-res-box" style={{
              cursor:'pointer', display:'flex', justifyContent: 'flex-start', alignItems:'center', height: '85px', borderBottom: '2px solid #B3B3B3', padding: '0 15px', textDecoration:'none'
@@ -40,7 +40,7 @@ export const DjangoSearchResult = ({onClick, data}:any) => {
     const bookInfo = JSON.parse(JSON.stringify(data)).book_info as DjangoBookInfo;
     
     return (
-        <Link to={{ pathname:`/book/info/item?title=${bookInfo.title}`, state:{
+        <Link to={{ pathname:`/saebyuk-web/book/info/item?title=${bookInfo.title}`, state:{
             item: item
         }}} onClick={onClick} id="search-res-box" style={{
              cursor:'pointer', display:'flex', justifyContent: 'flex-start', alignItems:'center', height: '85px', borderBottom: '2px solid #B3B3B3', padding: '0 15px', textDecoration:'none'
