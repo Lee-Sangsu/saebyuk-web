@@ -1,4 +1,3 @@
-import React from 'react';
 import 'styles/CheckBox.css';
 
 export const CircleCheckBox = ({onCheck, index, value}: any) => {
