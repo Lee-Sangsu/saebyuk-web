@@ -1,18 +1,17 @@
-import React from 'react';
 import "styles/Hovers.css";
 
-export const KeywordBox = ({id, keyword, onClick}:any) => {
+export const KeywordBox = ({id, keyword, onClick}) => {
 
-    var clicked:boolean = false;
+    var clicked = false;
 
-    const btnClicked = (event:any) => {
+    const btnClicked = (event) => {
         onClick(event);
         if (clicked) {
-            document.getElementById(id)!.style.backgroundColor = 'white';
-            document.getElementById(id)!.style.color = 'black';
+            document.getElementById(id).style.backgroundColor = 'white';
+            document.getElementById(id).style.color = 'black';
         } else {
-            document.getElementById(id)!.style.backgroundColor = 'black';
-            document.getElementById(id)!.style.color = 'white';
+            document.getElementById(id).style.backgroundColor = 'black';
+            document.getElementById(id).style.color = 'white';
         }
         clicked = !clicked;
     };
@@ -30,9 +29,9 @@ export const KeywordBox = ({id, keyword, onClick}:any) => {
     )
 };
 
-export const GenreBox = ({id, keyword, filter, setFilter}:any) => {
+export const GenreBox = ({id, keyword, filter, setFilter}) => {
 
-    const btnClicked = (event:any) => {
+    const btnClicked = (event) => {
         setFilter(event.target.value);
     };
 
@@ -51,7 +50,7 @@ export const GenreBox = ({id, keyword, filter, setFilter}:any) => {
     )
 };
 
-export const ColorfulKerwordBox = ({fontSize, margin, keyword, color}:any) => {
+export const ColorfulKerwordBox = ({fontSize, margin, keyword, color}) => {
     return (
         <span style={{
             border: '0px solid',

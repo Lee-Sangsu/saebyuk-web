@@ -1,4 +1,3 @@
-import React from 'react';
 
 const BookMakers = ({fontWeight, makers, fontSize}:any) => {
     return (

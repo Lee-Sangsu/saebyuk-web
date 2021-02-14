@@ -1,4 +1,4 @@
-import React from 'react';
+
 export const TextInput = ({maxLength, value, onChange, placeholder, onClick}:any) => {
 
     return (

@@ -1,4 +1,3 @@
-import React from 'react';
 
 const BookCover = ({onClick, className, src, width, height, margin}:any) => {
     return (
