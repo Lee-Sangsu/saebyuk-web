@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/saebyuk-web/static/css/main.5b13f47d.chunk.css",
-    "main.js": "/saebyuk-web/static/js/main.3be63c8f.chunk.js",
-    "main.js.map": "/saebyuk-web/static/js/main.3be63c8f.chunk.js.map",
+    "main.js": "/saebyuk-web/static/js/main.d97d29d7.chunk.js",
+    "main.js.map": "/saebyuk-web/static/js/main.d97d29d7.chunk.js.map",
     "runtime-main.js": "/saebyuk-web/static/js/runtime-main.3625e729.js",
     "runtime-main.js.map": "/saebyuk-web/static/js/runtime-main.3625e729.js.map",
-    "static/js/2.d7fb8907.chunk.js": "/saebyuk-web/static/js/2.d7fb8907.chunk.js",
-    "static/js/2.d7fb8907.chunk.js.map": "/saebyuk-web/static/js/2.d7fb8907.chunk.js.map",
+    "static/js/2.e0beb1a8.chunk.js": "/saebyuk-web/static/js/2.e0beb1a8.chunk.js",
+    "static/js/2.e0beb1a8.chunk.js.map": "/saebyuk-web/static/js/2.e0beb1a8.chunk.js.map",
     "index.html": "/saebyuk-web/index.html",
     "static/css/main.5b13f47d.chunk.css.map": "/saebyuk-web/static/css/main.5b13f47d.chunk.css.map",
-    "static/js/2.d7fb8907.chunk.js.LICENSE.txt": "/saebyuk-web/static/js/2.d7fb8907.chunk.js.LICENSE.txt",
+    "static/js/2.e0beb1a8.chunk.js.LICENSE.txt": "/saebyuk-web/static/js/2.e0beb1a8.chunk.js.LICENSE.txt",
     "static/media/Font.css": "/saebyuk-web/static/media/AppleSDGothicNeoM.88c00162.ttf",
     "static/media/default-profile.png": "/saebyuk-web/static/media/default-profile.c9207524.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3625e729.js",
-    "static/js/2.d7fb8907.chunk.js",
+    "static/js/2.e0beb1a8.chunk.js",
     "static/css/main.5b13f47d.chunk.css",
-    "static/js/main.3be63c8f.chunk.js"
+    "static/js/main.d97d29d7.chunk.js"
   ]
 }
