@@ -35,21 +35,21 @@ const Navigator = () => {
             }}>
                 <li style={newLiStyle}>
                     <Link style={linkStyle} to="/saebyuk-web/">
-                        새벽 로고
+                        <img style={{width:'80px', height:'auto'}} src={require('assets/saebyuk-logo.png').default} alt="새벽" />
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/saebyuk-web/book/return/">
+                    <Link style={{...linkStyle, display:'flex', alignItems: 'center' }} to="/saebyuk-web/book/return/">
                         반납
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/saebyuk-web/my-library">
+                    <Link style={{...linkStyle, display:'flex', alignItems: 'center' }} to="/saebyuk-web/my-library">
                         내 서재
                     </Link>
                 </li>
                 <li style={newLiStyle}>
-                    <Link style={linkStyle} to="/saebyuk-web/book/request-or-faq">
+                    <Link style={{...linkStyle, display:'flex', alignItems: 'center' }} to="/saebyuk-web/book/request-or-faq">
                         신청 및 문의
                     </Link>
                 </li>

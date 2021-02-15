@@ -106,9 +106,9 @@ export const PulMuLink = ({item}:any) => {
             justifyContent: 'space-between'
         }}>
             <a href="https://poolmoojil.com/">
-                풀무질 로고
+                <img src={require('assets/pulmu-logo.png').default} alt="풀무질에서 구입하기" style={{width:"60px", height: 'auto'}} />
             </a>
-            <a style={grayText} href={item.purchase_link ? item.purchase_link : ""}>
+            <a style={{...grayText, display: 'flex', alignItems: 'center'}} href={item.purchase_link ? item.purchase_link : ""}>
                 {`책 구매하기 >`}
             </a>
         </div>
