@@ -188,7 +188,7 @@ export const SignInBtn = () =>{
           if (res.status === 203) {
             // console.log(res.data);
             setProfile(res.data); 
-            history.push("/sign-up");
+            history.push("/saebyuk-web/sign-up");
             setInit(true);
           } else if (res.status === 200) {
             // console.log(res.data);
