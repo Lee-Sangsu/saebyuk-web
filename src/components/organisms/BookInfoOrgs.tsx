@@ -7,7 +7,7 @@ import { getRandomLightColor } from "styles/GetRandomColor";
 import { BorrowBookBtn } from "components/atoms/Btns";
 import { grayText } from "styles/TextStyles";
 import axios from 'axios';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import { useHistory } from "react-router-dom";
 import { LoveCheckBox } from "components/atoms/Boxes/LoveCheckBox";
 

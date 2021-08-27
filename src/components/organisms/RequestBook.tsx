@@ -3,7 +3,7 @@ import { SubTitle } from 'components/atoms/Texts/Titles';
 import {TextInput} from 'components/atoms/TextInputs';
 import {RequestBookBtn} from 'components/atoms/Btns';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 const RequestBook = () => {
     const userNickName = window.sessionStorage.getItem('user');

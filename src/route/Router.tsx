@@ -10,6 +10,7 @@ import Navigator from './Navigator';
 import { BookInfo } from 'pages/BookInfo';
 import { ReturnBook } from 'pages/ReturnBook';
 import { MyLibrary } from 'pages/MyLibrary';
+import { Admin } from 'pages/Admin';
 
 const AppRouter = () => {
     return (
@@ -36,6 +37,9 @@ const AppRouter = () => {
                 </Route>
                 <Route exact path="/saebyuk-web/book/register/keyword/">
                     <InputKeywords />
+                </Route> 
+                <Route exact path="/saebyuk-web/admin">
+                    <Admin />
                 </Route>
                 <Route exact path="/saebyuk-web/book/register/etc-infos/">
                     <MustTypedInfos />

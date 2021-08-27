@@ -1,7 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
 import React from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import {useSetRecoilState} from 'recoil';
 import ProfileState from 'states/ProfileState';
 import { BorRetBtnStyle, loginBtnStyle } from "styles/FlexStyles";

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import ProfileState from 'states/ProfileState';
 import {useRecoilValue} from 'recoil';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { TextInput } from "components/atoms/TextInputs";
 import { SignUpBtn } from "components/atoms/Btns";
 import {  ColumnFlex } from "styles/FlexStyles";
