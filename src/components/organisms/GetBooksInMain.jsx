@@ -73,7 +73,7 @@ const GetBooksInMain = () => {
                     <GenreBox key={index} filter={filter} setFilter={setFilter} id={`keyword-box${index}`} keyword={value} />
                 )}
             </div>
-            <SubTitle fontSize="20px" fontWeight="bolder" margin="0 70% 0 10%" text="취향별 추천 도서" />
+            <SubTitle fontSize="20px" fontWeight="bolder" margin="0 70% 0 10%" text="도서 목록" />
             <div style = {{width: '90%', marginLeft: '10%'}}>
             {dataLoaded ?
                 <Slider {...settings}>

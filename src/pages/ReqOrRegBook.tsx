@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchNewBook from 'components/organisms/SearchNewBook';
 import RequestBook from 'components/organisms/RequestBook';
 import FAQ from 'components/organisms/FAQ';
 import { useHistory } from 'react-router-dom';
@@ -15,8 +14,6 @@ const ReqOrRegBook = () => {
         history.goBack();
         window.alert("로그인이 필요합니다"); 
     }}, [history, isLoggedIn])
-
-    const userNickName = window.sessionStorage.getItem('user');
 
     return (
         <div style= {{
@@ -35,7 +32,7 @@ const ReqOrRegBook = () => {
                 height: '50%',
                 marginTop: '20%'
             }} />
-            
+
             <FAQ /> 
         </div>
     )

@@ -31,7 +31,7 @@ const Navigator = () => {
             <div style={{
                 ...RowFlex,
                 justifyContent: 'flex-start',
-                minWidth: '470px'
+                minWidth: '500px'
             }}>
                 <li style={newLiStyle}>
                     <Link style={linkStyle} to="/saebyuk-web/">
@@ -51,6 +51,11 @@ const Navigator = () => {
                 <li style={newLiStyle}>
                     <Link style={{...linkStyle, display:'flex', alignItems: 'center' }} to="/saebyuk-web/book/request-or-faq">
                         신청 및 문의
+                    </Link>
+                </li>
+                <li style={{...newLiStyle, margin: "0 3%"}}>
+                    <Link style={{...linkStyle, display:'flex', alignItems: 'center' }} to="/saebyuk-web/admin">
+                        관리
                     </Link>
                 </li>
                 <li style={{...liStyle, alignItems: 'center'}}>
